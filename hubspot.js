@@ -723,7 +723,7 @@ exports.company = {
 		var endpoint = `https://api.hubapi.com/companies/v2/companies/` + companyID + `/contacts/` + vid
 		if(hubCache.get("config").type == "hapikey"){
 			endpoint += `?hapikey=` + hubCache.get("config").value
-			return axios.put(endpoint,
+			return axios.put(endpoint,{},
 				{headers: {"content-type": "application/json"}
 			}).then(response =>{
 				return response
@@ -732,8 +732,8 @@ exports.company = {
 			})
 		}else{
 			var token = hubCache.get("config").value
-			return axios.put(endpoint,
-				{headers: {"Authorization": "Bearer " + token, "content-type": "application/json"}
+			return axios.put(endpoint,{},
+				{headers: {"Authorization": "Bearer " + token}
 			}).then(response => {
 				return response
 			}).catch(err => {
@@ -1118,7 +1118,7 @@ function getContactsAtCompany(companyID,portalID){
 				  })
 				}else{
 					var token = hubCache.get("config").value
-					axios.get(endpoint + '?offset=' + vidOffset,
+					axios.get(endpoint + '&offset=' + vidOffset,
 						{headers: {"Authorization": "Bearer " + token }
 					})
 				    .then(response =>{
@@ -1216,7 +1216,7 @@ function getContactVIDsAtCompany(companyID,portalID){
 				  })
 				}else{
 					var token = hubCache.get("config").value
-					axios.get(endpoint + '?offset=' + vidOffset,
+					axios.get(endpoint + '&offset=' + vidOffset,
 						{headers: {"Authorization": "Bearer " + token }
 					})
 				    .then(response =>{

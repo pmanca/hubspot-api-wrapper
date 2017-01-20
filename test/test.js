@@ -1,13 +1,19 @@
 var hubspot = require('../hubspot')
-//var superagent = require('superagent')
-//var expect = require('expect')
 var assert = require('assert')
 var portalID = 2323210
-var companyID = 256313506
+var companyID = 304784618
 var randNum = Math.random() * 100
-var token = "CJve59CbKxICXwEYiuaNASCRtLUBKLSqAjIZAEL7khPuLwHnSQO2BU5UGxeOoQCMP0kP8A"
-var options = {type:"hapikey",value:"e5ca5aac-d9e0-4d2c-aeed-93179d563c6c"}
-//var options = {type:"oauth" , value:token}
+var token = "COSo5OqbKxICXwEYiuaNASCRtLUBKLSqAjIZAEL7khPdZ3b29HfMzn44j4zgbHnCMbASsw"
+//var options = {type:"hapikey",value:"e5ca5aac-d9e0-4d2c-aeed-93179d563c6c"}
+var options = {type:"oauth" , value:token}
+var updateCompanyBody = {
+    "properties": [
+        {
+            "name": "description",
+            "value": "A far better description than before"
+        }
+    ]
+}
 var dealToCreate =  {
             "associations": {
                 "associatedCompanyIds": [
@@ -66,7 +72,7 @@ it("sets up the auth",function(){
 })
 
 //default timeout in mocha is 2000 ms
-/*
+
 it('get all contacts',function(){
 	this.timeout(8000)
 	return hubspot.contact.getAll()
@@ -108,24 +114,21 @@ it('contact search',function(){
 it('create a contact',function(){
 	return hubspot.contact.create(contact2Create)
 	.then(function(data){
+		console.log(data)
 		assert(data.status == 200)
 	})
 })
 
 
-it('Delete a company',function(){
-	return hubspot.company.delete(companyID,portalID)
+it('update a company',function(){
+	return hubspot.company.update(companyID,updateCompanyBody)
 	.then(function(data){
+		//console.log(data)
 		assert(data.status == 200)
 	})
 })
 
-it('Delete a company when company does not exit',function(){
-	return hubspot.company.delete(companyID,portalID)
-	.then(function(data){
-		assert(data.status != 200)
-	})
-})
+
 
 it('get all companies',function(){
 	this.timeout(7000)
@@ -160,7 +163,7 @@ it('get company by domain',function(){
 })
 
 it('get company by ID',function(){
-	return hubspot.company.getByID(274763484)
+	return hubspot.company.getByID(companyID)
 	.then(function(data){
 	//	console.log(data)
 		assert(data.status == 200)
@@ -168,7 +171,7 @@ it('get company by ID',function(){
 })
 
 it('get contacts at company',function(){
-	return hubspot.company.getContactsByCompanyID(274763484,portalID)
+	return hubspot.company.getContactsByCompanyID(companyID,portalID)
 	.then(function(data){
 		//console.log(data)
 		assert(Array.isArray(data))
@@ -176,7 +179,7 @@ it('get contacts at company',function(){
 })
 
 it('get contact vids at company',function(){
-	return hubspot.company.getContactIDsByCompanyID(274763484,portalID)
+	return hubspot.company.getContactIDsByCompanyID(companyID,portalID)
 	.then(function(data){
 		//console.log(data)
 		assert(data != null)
@@ -184,15 +187,15 @@ it('get contact vids at company',function(){
 })
 
 it('add contact to company',function(){
-	return hubspot.company.addContactToCompany(274763484,301)
+	return hubspot.company.addContactToCompany(companyID,301)
 	.then(function(data){
 		//console.log(data)
 		assert(data.status == 200)
 	})
 })
-*/
+
 it('(FAIL)add contact to company',function(){
-	return hubspot.company.addContactToCompany(274763484,300)
+	return hubspot.company.addContactToCompany(companyID,300)
 	.then(function(data){
 		//console.log(data)
 		assert(data.response.status == 404)
@@ -200,10 +203,24 @@ it('(FAIL)add contact to company',function(){
 })
 
 it('remove contact from company',function(){
-	return hubspot.company.removeContactFromCompany(274763484,301)
+	return hubspot.company.removeContactFromCompany(companyID,301)
 	.then(function(data){
 		//console.log(data)
 		assert(data.status == 204)
+	})
+})
+
+it('Delete a company',function(){
+	return hubspot.company.delete(companyID,portalID)
+	.then(function(data){
+		assert(data.status == 200)
+	})
+})
+
+it('Delete a company when company does not exit',function(){
+	return hubspot.company.delete(companyID,portalID)
+	.then(function(data){
+		assert(data.status != 200)
 	})
 })
 
@@ -212,8 +229,5 @@ it('create a deal',function(){
 	.then(function(data){
 		//console.log(data)
 		assert(data.status == 200)
-	}).catch(function(err){
-		//console.log(err)
-		assert(data.status == 400)
 	})
 })
