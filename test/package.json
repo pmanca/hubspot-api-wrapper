@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "expect": "^1.20.2",
+    "superagent": "^3.3.2"
+  }
+}
