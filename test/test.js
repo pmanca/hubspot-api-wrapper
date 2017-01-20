@@ -2,10 +2,11 @@ var hubspot = require('../hubspot')
 var assert = require('assert')
 var portalID = 2323210
 var companyID = 304784618
+var dealID = 59275105
 var randNum = Math.random() * 100
-var token = "COSo5OqbKxICXwEYiuaNASCRtLUBKLSqAjIZAEL7khPdZ3b29HfMzn44j4zgbHnCMbASsw"
-//var options = {type:"hapikey",value:"e5ca5aac-d9e0-4d2c-aeed-93179d563c6c"}
-var options = {type:"oauth" , value:token}
+var token = "CK77ivmbKxICXwEYiuaNASCRtLUBKLSqAjIZAEL7khPaiCiSiXdHlXSuHsnIvOfQwOzcUg"
+var options = {type:"hapikey",value:"e5ca5aac-d9e0-4d2c-aeed-93179d563c6c"}
+//var options = {type:"oauth" , value:token}
 var updateCompanyBody = {
     "properties": [
         {
@@ -13,6 +14,14 @@ var updateCompanyBody = {
             "value": "A far better description than before"
         }
     ]
+}
+var deal2Update = {
+  "properties": [
+    {
+      "name": "amount",
+      "value": "70000"
+    }
+  ]
 }
 var dealToCreate =  {
             "associations": {
@@ -72,7 +81,7 @@ it("sets up the auth",function(){
 })
 
 //default timeout in mocha is 2000 ms
-
+/*
 it('get all contacts',function(){
 	this.timeout(8000)
 	return hubspot.contact.getAll()
@@ -223,7 +232,7 @@ it('Delete a company when company does not exit',function(){
 		assert(data.status != 200)
 	})
 })
-
+*/
 it('create a deal',function(){
 	return hubspot.deal.create(dealToCreate)
 	.then(function(data){
@@ -231,3 +240,89 @@ it('create a deal',function(){
 		assert(data.status == 200)
 	})
 })
+
+it('Get All deals',function(){
+	return hubspot.deal.getAll(["dealstage","dealname"])
+	.then(function(data){
+		//console.log(data[0].properties)
+		assert(data != null)
+	})
+})
+
+it('update a deal',function(){
+	return hubspot.deal.update(dealID,deal2Update)
+	.then(function(data){
+		//console.log(data)
+		assert(data.status == 200)
+	})
+})
+
+it('Get Recently Modified deals',function(){
+	return hubspot.deal.getRecentlyModified()
+	.then(function(data){
+		//console.log(data)
+		assert(data != null)
+	})
+})
+
+it('Get Recently Created deals',function(){
+	return hubspot.deal.getRecentlyCreated()
+	.then(function(data){
+		//console.log(data)
+		assert(data != null)
+	})
+})
+
+it('Delete a deal',function(){
+	return hubspot.deal.delete(85355883,portalID)
+	.then(function(data){
+		//console.log(data)
+		assert(data.status == 204)
+	})
+})
+
+/*
+//This doesn't work I get a 204 no matter what
+it('(FAIL) Delete a deal',function(){
+	return hubspot.deal.delete(85355883,portalID)
+	.then(function(data){
+		console.log(data.request)//.ClientRequest)
+		assert(data.status == 404)
+	})
+})
+*/
+
+it('Get a deal by ID',function(){
+	return hubspot.deal.getByID(60872789)
+	.then(function(data){
+		//console.log(data)
+		assert(data != null)
+	})
+})
+
+it('Associate a contact to a deal',function(){
+	return hubspot.deal.associate(60872789,"CONTACT",301)
+	.then(function(data){
+		//console.log(data)
+		assert(data.status == 204)
+	})
+})
+
+
+it('Get All deals of Associate',function(){
+	return hubspot.deal.getAssociatedDeals("CONTACT",301)
+	.then(function(data){
+		//console.log(data)
+		assert(data != null)
+	})
+})
+
+
+it('Remove Associate object from a deal',function(){
+	return hubspot.deal.removeAssociateObject(60872789,"CONTACT",301)
+	.then(function(data){
+		//console.log(data)
+		assert(data.status == 204)
+	})
+})
+
