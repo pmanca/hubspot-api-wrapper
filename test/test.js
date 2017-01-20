@@ -6,8 +6,43 @@ var portalID = 2323210
 var companyID = 256313506
 var randNum = Math.random() * 100
 var token = "CJve59CbKxICXwEYiuaNASCRtLUBKLSqAjIZAEL7khPuLwHnSQO2BU5UGxeOoQCMP0kP8A"
-//var options = {type:"hapikey",value:"e5ca5aac-d9e0-4d2c-aeed-93179d563c6c"}
-var options = {type:"oauth" , value:token}
+var options = {type:"hapikey",value:"e5ca5aac-d9e0-4d2c-aeed-93179d563c6c"}
+//var options = {type:"oauth" , value:token}
+var dealToCreate =  {
+            "associations": {
+                "associatedCompanyIds": [
+                    
+                ],
+                "associatedVids": [
+                    301
+                ]
+            },
+            "portalId": portalID,
+            "properties": [
+                {
+                    "value": "Tim's Newer Deal",
+                    "name": "dealname"
+                },
+                {
+                    "value": "appointmentscheduled",
+                    "name": "dealstage"
+                },
+                {
+                    "value": "default",
+                    "name": "pipeline"
+                },
+                {
+                    "value": 1409443200000,
+                    "name": "closedate"
+                },
+                {
+                    "value": "60000",
+                    "name": "amount"
+                }
+                
+            ]
+        }
+
 var contact2Create = {
             "properties": [
                 {
@@ -159,7 +194,7 @@ it('add contact to company',function(){
 it('(FAIL)add contact to company',function(){
 	return hubspot.company.addContactToCompany(274763484,300)
 	.then(function(data){
-		console.log(data)
+		//console.log(data)
 		assert(data.response.status == 404)
 	})
 })
@@ -169,5 +204,16 @@ it('remove contact from company',function(){
 	.then(function(data){
 		//console.log(data)
 		assert(data.status == 204)
+	})
+})
+
+it('create a deal',function(){
+	return hubspot.deal.create(dealToCreate)
+	.then(function(data){
+		//console.log(data)
+		assert(data.status == 200)
+	}).catch(function(err){
+		//console.log(err)
+		assert(data.status == 400)
 	})
 })

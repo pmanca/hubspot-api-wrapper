@@ -1261,3 +1261,34 @@ function getContactVIDsAtCompany(companyID,portalID){
 	})//end of Promise
 	
 }
+
+//end of companies
+//////////////////////////////////////////////////////////////////
+//start the deals
+
+exports.deal = {
+	create: body => {
+		var endpoint =  `https://api.hubapi.com/deals/v1/deal`
+		if(hubCache.get("config").type == "hapikey"){
+			endpoint += `?hapikey=` + hubCache.get("config").value
+			return axios.post(endpoint,body,
+				{headers: {"content-type": "application/json" }
+				}).then(response =>{
+				return response
+			}).catch(err =>{
+				return err
+			})
+		}else{
+			var token = hubCache.get("config").value
+			return axios.post(endpoint,body,
+				{headers: {"Authorization": "Bearer " + token,
+				"content-type": "application/json" }
+			}).then(response => {
+				return response
+			}).catch(err => {
+				return err
+			})
+		}
+	}
+	
+}
