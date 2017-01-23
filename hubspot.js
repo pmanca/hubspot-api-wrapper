@@ -3,7 +3,8 @@
 *1/17/2017
 */
 var axios = require('axios')
-var hubCache = new Map()
+//var hubCache = new Map()
+var hubCache = require('./init').hubCache
 
 exports.contact = {
 	getAll: properties => {		
@@ -570,7 +571,7 @@ function getRecentContacts(properties){
  
 
 
-exports.init = obj => {
+/*exports.init = obj => {
 	if(Object.keys(obj)[0] == "type" && Object.keys(obj)[1] == "value" && Object.keys(obj).length == 2){
 		hubCache.set("config",obj)
 		return true
@@ -578,7 +579,7 @@ exports.init = obj => {
 		return false
 	}
 
-}
+}*/
 //end auth
 ////////////////////////////////////////////////////////////////
 //start company

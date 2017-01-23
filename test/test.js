@@ -1,4 +1,4 @@
-var hubspot = require('../hubspot')
+var hubspot = require('../index')
 var assert = require('assert')
 var portalID = 2323210
 var companyID = 304784618
@@ -81,7 +81,7 @@ it("sets up the auth",function(){
 })
 
 //default timeout in mocha is 2000 ms
-/*
+
 it('get all contacts',function(){
 	this.timeout(8000)
 	return hubspot.contact.getAll()
@@ -123,7 +123,7 @@ it('contact search',function(){
 it('create a contact',function(){
 	return hubspot.contact.create(contact2Create)
 	.then(function(data){
-		console.log(data)
+		//console.log(data)
 		assert(data.status == 200)
 	})
 })
@@ -232,7 +232,7 @@ it('Delete a company when company does not exit',function(){
 		assert(data.status != 200)
 	})
 })
-*/
+
 it('create a deal',function(){
 	return hubspot.deal.create(dealToCreate)
 	.then(function(data){

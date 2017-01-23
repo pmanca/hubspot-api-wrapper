@@ -1,4 +1,5 @@
-var hubspot = require('./hubspot')
+var hubspot = require('../index')
+
 var vid = 301
 var portalID = 2323210
 var companyID = 256313506
@@ -11,7 +12,7 @@ var options = {type:"hapikey",value:"e5ca5aac-d9e0-4d2c-aeed-93179d563c6c"}
 var initResult = hubspot.init(options)
 console.log(initResult)
 
-var properties = {
+/*var properties = {
     "properties": [
         {
             "name": "name",
@@ -23,8 +24,20 @@ var properties = {
         }
     ]
 }
+*/
+
+hubspot.contact.getAll().then(result => {
+   console.log(result.length)
+}).catch(err => {
+   console.log(err)
+})
 
 hubspot.company.getAll().then(result => {
+    console.log(result.length)
+})
+
+
+hubspot.deal.getAll().then(result => {
     console.log(result.length)
 })
 
