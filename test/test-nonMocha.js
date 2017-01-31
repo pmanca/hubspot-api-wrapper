@@ -26,21 +26,37 @@ console.log(initResult)
 }
 */
 
-hubspot.contact.getAll().then(result => {
-   console.log(result.length)
-}).catch(err => {
-   console.log(err)
-})
+// hubspot.contact.getAll().then(result => {
+//    console.log(result.length)
+// }).catch(err => {
+//    console.log(err)
+// })
+
+// hubspot.company.getAll().then(result => {
+//     console.log(result.length)
+// })
+
+
+// hubspot.deal.getAll().then(result => {
+//     console.log(result.length)
+// })
+hubspot.company.getRecentlyCreated()
+            .then(data => {
+                console.log(data)
+            }).catch(err => {
+                console.log(err)
+            })
+
+hubspot.company.getRecentlyModified()
+            .then(data => {
+                console.log(data)
+            }).catch(err => {
+                console.log(err)
+            })
 
 hubspot.company.getAll().then(result => {
-    console.log(result.length)
-})
-
-
-hubspot.deal.getAll().then(result => {
-    console.log(result.length)
-})
-
+    console.log(result)
+})            
 /*hubspot.company.update(companyID,properties).then(result => {
     console.log(result)
 })*/

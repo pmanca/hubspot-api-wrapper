@@ -109,25 +109,6 @@ exports.deal = {
 		}
 		
 	},
-	getByID: id => {
-		var endpoint = `https://api.hubapi.com/deals/v1/deal/` + id
-		if(hubCache.get("config").type == "hapikey"){
-			endpoint += `?hapikey=` + hubCache.get("config").value			
-			return axios.get(endpoint).then(response => {
-				return response
-			})
-		}else{
-			var token = hubCache.get("config").value
-			return axios.get(endpoint,
-				{headers: {"Authorization": "Bearer " + token }
-			}).then(response => {
-				return response
-			}).catch(err =>{
-				return err
-			})
-		}
-		
-	},
 	associate: (dealID,objType,objIDs) => {		
 		var endpoint = `https://api.hubapi.com/deals/v1/deal/` + dealID + `/associations/` + objType
 		var idString = ""

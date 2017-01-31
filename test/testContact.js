@@ -99,6 +99,12 @@ var contact2Update = {
             }
 
 describe('Testing the Contact Enpoints',function(){
+	this.timeout(2500)
+	beforeEach(function(done){
+		setTimeout(function(){
+			done()
+		},500)
+	})
 	describe('set up the auth',function(){
 		it("success",function(){
 			var result = hubspot.init(options)

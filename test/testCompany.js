@@ -28,6 +28,12 @@ var company2Create = {
 
 
 describe('Testing the company endpoints',function(){
+	this.timeout(2500)
+	beforeEach(function(done){
+		setTimeout(function(){
+			done()
+		},500)
+	})
 	describe('set up the auth',function(){
 		it("success",function(){
 			var result = hubspot.init(options)
@@ -92,7 +98,7 @@ describe('Testing the company endpoints',function(){
 
 	describe('Get Recently Modified Companies',function(){
 		it('success',function(){
-			this.timeout(30000)
+			this.timeout(10000)
 			return hubspot.company.getRecentlyModified()
 			.then(data => {
 				assert(data != null)
@@ -102,7 +108,7 @@ describe('Testing the company endpoints',function(){
 
 	describe('Get Recently Created Companies',function(){
 		it('success',function(){
-			this.timeout(30000)
+			this.timeout(10000)
 			return hubspot.company.getRecentlyCreated()
 			.then(data => {
 				assert(data != null)

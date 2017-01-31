@@ -199,7 +199,7 @@ function getCompanies(properties){
 				//update the key
 				if(hubCache.get("config").type == "hapikey"){
 					var key = hubCache.get("config").value
-					axios.get(endpoint + "?hapikey=" + key + '&vidOffset=' + offset + propString)
+					axios.get(endpoint + "?hapikey=" + key + '&offset=' + offset + propString)
 				    .then(response =>{
 				    companies = companies.concat(response.data.companies)
 				    if (response.data['has-more']){
@@ -298,11 +298,14 @@ function getRecentlyModifiedCompanies(){
 				//update the key
 				if(hubCache.get("config").type == "hapikey"){
 					var key = hubCache.get("config").value
-					axios.get(endpoint + "?hapikey=" + key + '&vidOffset=' + offset)
+					axios.get(endpoint + "?hapikey=" + key + '&offset=' + offset)
 				    .then(response =>{
-				    companies = companies.concat(response.data.companies)
+				    companies = companies.concat(response.data.results)
 				    if (response.data['hasMore']){
-				      toCall(response.data['offset'])      
+				    	setTimeout(function(){
+				    		toCall(response.data['offset'])      		
+				    	},101)
+				      
 				    }else{    	
 				    	resolve(companies)
 				    }
@@ -342,7 +345,9 @@ function getRecentlyModifiedCompanies(){
 				    .then(response =>{
 				    companies = companies.concat(response.data.companies)
 				    if (response.data['hasMore']){
-				      toCall(response.data['offset'])      
+				    	setTimeout(function(){
+				    		toCall(response.data['offset'])      		
+				    	},101)
 				    }else{    	
 				    	resolve(companies)
 				    }
@@ -398,11 +403,14 @@ function getRecentlyCreatedCompanies(){
 				//update the key
 				if(hubCache.get("config").type == "hapikey"){
 					var key = hubCache.get("config").value
-					axios.get(endpoint + "?hapikey=" + key + '&vidOffset=' + offset)
+					axios.get(endpoint + "?hapikey=" + key + '&offset=' + offset)
 				    .then(response =>{
-				    companies = companies.concat(response.data.companies)
+				    companies = companies.concat(response.data.results)
 				    if (response.data['hasMore']){
-				      toCall(response.data['offset'])      
+				      	setTimeout(function(){
+				      		toCall(response.data['offset'])      		
+				      	},101)
+				      
 				    }else{    	
 				    	resolve(companies)
 				    }
@@ -442,7 +450,12 @@ function getRecentlyCreatedCompanies(){
 				    .then(response =>{
 				    companies = companies.concat(response.data.companies)
 				    if (response.data['hasMore']){
-				      toCall(response.data['offset'])      
+				    	setTimeout(function(){
+				    		console.log(companies.length)
+				    		toCall(response.data['offset'])      		
+				    	},101)
+				      
+
 				    }else{    	
 				    	resolve(companies)
 				    }
@@ -536,7 +549,7 @@ function getContactsAtCompany(companyID,portalID){
 				  })
 				}else{
 					var token = hubCache.get("config").value
-					axios.get(endpoint + '&offset=' + vidOffset,
+					axios.get(endpoint + '&vidOffset=' + vidOffset,
 						{headers: {"Authorization": "Bearer " + token }
 					})
 				    .then(response =>{
@@ -634,7 +647,7 @@ function getContactVIDsAtCompany(companyID,portalID){
 				  })
 				}else{
 					var token = hubCache.get("config").value
-					axios.get(endpoint + '&offset=' + vidOffset,
+					axios.get(endpoint + '&vidOffset=' + vidOffset,
 						{headers: {"Authorization": "Bearer " + token }
 					})
 				    .then(response =>{
