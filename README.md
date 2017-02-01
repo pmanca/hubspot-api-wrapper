@@ -1,9 +1,11 @@
 # HubSpot-API
 Innitial commit
-Promised based node package to assist with making API calls to the HubSpot servers.  Version 0.1 on release will support contacts companies and deals
+Promised based node package to assist with making API calls to the HubSpot 
+servers.  Version 0.1 on release will support contacts companies and deals 
+endpoints
 
 
-Peter Manca
+Author: Peter Manca(Hubspotter)
 
 The fist thing you need to do to be able to call any of the functions listed 
 below is to initialize your credentials.  This package can handle oauth2 or 
