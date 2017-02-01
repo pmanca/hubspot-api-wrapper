@@ -5,14 +5,14 @@ var hubspot = require('../index')
 var assert = require('assert')
 var portalID = 2323210
 var randNum = Math.random() * 100
-var VID2Delete = 23551
+var VID2Delete = 24451
 var utk = "629f2542ccc40c0f413fc35f46c3e799"
 
 
 
 
 
-var token = "CK77ivmbKxICXwEYiuaNASCRtLUBKLSqAjIZAEL7khPaiCiSiXdHlXSuHsnIvOfQwOzcUg"
+var token = "CKeKrNmfKxICXwEYiuaNASCRtLUBKKCjAjIZAEL7khOwgSSJ-ubkD4vzceDda2eQbagvNw"
 var options = {type:"hapikey",value:"e5ca5aac-d9e0-4d2c-aeed-93179d563c6c"}
 //var options = {type:"oauth" , value:token}
 var updateCompanyBody = {

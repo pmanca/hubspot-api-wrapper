@@ -2,7 +2,7 @@ var axios = require('axios')
 var hubCache = require('./init').hubCache
 
 exports.company = {
-	create: properties =>{
+	create: properties => {
 		var endpoint =  `https://api.hubapi.com/companies/v2/companies`
 		if(hubCache.get("config").type == "hapikey"){
 			endpoint += `?hapikey=` + hubCache.get("config").value
@@ -22,7 +22,7 @@ exports.company = {
 			})
 		}
 	},
-	update: (companyID,properties) =>{
+	update: (companyID,properties) => {
 		var endpoint =  `https://api.hubapi.com/companies/v2/companies/` + companyID
 		if(hubCache.get("config").type == "hapikey"){
 			endpoint += `?hapikey=` + hubCache.get("config").value
@@ -42,7 +42,7 @@ exports.company = {
 			})
 		}
 	},
-	delete: (id,portalID) =>{
+	delete: (id,portalID) => {
 		var endpoint = `https://api.hubapi.com/companies/v2/companies/`+ id + `?portalId=` + portalID
 		if(hubCache.get("config").type == "hapikey"){
 			endpoint += `&hapikey=` + hubCache.get("config").value
@@ -137,7 +137,7 @@ exports.company = {
 				throw err
 			})
 	},
-	addContactToCompany: (companyID,vid) =>{
+	addContactToCompany: (companyID,vid) => {
 		var endpoint = `https://api.hubapi.com/companies/v2/companies/` + companyID + `/contacts/` + vid
 		if(hubCache.get("config").type == "hapikey"){
 			endpoint += `?hapikey=` + hubCache.get("config").value
@@ -159,7 +159,7 @@ exports.company = {
 			})
 		}
 	},
-	removeContactFromCompany: (companyID,vid) =>{
+	removeContactFromCompany: (companyID,vid) => {
 		var endpoint = `https://api.hubapi.com/companies/v2/companies/` + companyID + `/contacts/` + vid
 		if(hubCache.get("config").type == "hapikey"){
 			endpoint += `?hapikey=` + hubCache.get("config").value
@@ -203,7 +203,10 @@ function getCompanies(properties){
 				    .then(response =>{
 				    companies = companies.concat(response.data.companies)
 				    if (response.data['has-more']){
-				      toCall(response.data['offset'])      
+				    	setTimeout(function(){
+				    		toCall(response.data['offset'])      		
+				    	},101)
+				      
 				    }else{    	
 				    	resolve(companies)
 				    }
@@ -243,7 +246,9 @@ function getCompanies(properties){
 				    .then(response =>{
 				    companies = companies.concat(response.data.companies)
 				    if (response.data['has-more']){
-				      toCall(response.data['offset'])      
+				    	setTimeout(function(){
+				    		toCall(response.data['offset'])      		
+				    	},101)
 				    }else{    	
 				    	resolve(companies)
 				    }
@@ -451,11 +456,8 @@ function getRecentlyCreatedCompanies(){
 				    companies = companies.concat(response.data.companies)
 				    if (response.data['hasMore']){
 				    	setTimeout(function(){
-				    		console.log(companies.length)
 				    		toCall(response.data['offset'])      		
 				    	},101)
-				      
-
 				    }else{    	
 				    	resolve(companies)
 				    }
@@ -515,7 +517,9 @@ function getContactsAtCompany(companyID,portalID){
 				    .then(response =>{
 				    contacts = contacts.concat(response.data.contacts)
 				    if (response.data['hasMore']){
-				      toCall(response.data['offset'])      
+				    	setTimeout(function(){
+				    		toCall(response.data['offset'])      		
+				    	},101)
 				    }else{    	
 				    	resolve(contacts)
 				    }
@@ -555,7 +559,9 @@ function getContactsAtCompany(companyID,portalID){
 				    .then(response =>{
 				    contacts = contacts.concat(response.data.companies)
 				    if (response.data['hasMore']){
-				      toCall(response.data['offset'])      
+				    	setTimeout(function(){
+				    		toCall(response.data['offset'])      		
+				    	},101)
 				    }else{    	
 				    	resolve(contacts)
 				    }
@@ -613,7 +619,9 @@ function getContactVIDsAtCompany(companyID,portalID){
 				    .then(response =>{
 				    contacts = contacts.concat(response.data.contacts)
 				    if (response.data['hasMore']){
-				      toCall(response.data['offset'])      
+				    	setTimeout(function(){
+				    		toCall(response.data['offset'])      		
+				    	},101)
 				    }else{    	
 				    	resolve(contacts)
 				    }
@@ -653,7 +661,9 @@ function getContactVIDsAtCompany(companyID,portalID){
 				    .then(response =>{
 				    contacts = contacts.concat(response.data.companies)
 				    if (response.data['hasMore']){
-				      toCall(response.data['offset'])      
+				    	setTimeout(function(){
+				    		toCall(response.data['offset'])      		
+				    	},101)
 				    }else{    	
 				    	resolve(contacts)
 				    }

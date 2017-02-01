@@ -7,7 +7,8 @@ var portalID = 2323210
 var randNum = Math.random() * 100
 var dealID = 85363503
 var deal2Delete = 85359153
-var token = "CK77ivmbKxICXwEYiuaNASCRtLUBKLSqAjIZAEL7khPaiCiSiXdHlXSuHsnIvOfQwOzcUg"
+var vid = 22851
+var token = "CKeKrNmfKxICXwEYiuaNASCRtLUBKKCjAjIZAEL7khOwgSSJ-ubkD4vzceDda2eQbagvNw"
 var options = {type:"hapikey",value:"e5ca5aac-d9e0-4d2c-aeed-93179d563c6c"}
 //var options = {type:"oauth" , value:token}
 
@@ -148,18 +149,46 @@ describe('Testing the Deal Enpoints --> ',function(){
 
 	describe("Associate an object to the deal",function(){
 		it('success',function(){
-			return hubspot.deal.associate(dealID,"CONTACT",[301])
+			return hubspot.deal.associate(dealID,"CONTACT",[vid])
 			.then(data => {
-				console.log(data)
 				assert(data.status == 204)
 			})
 		})
 		it('FAIL',function(){
-			return hubspot.deal.associate(-99,"CONTACT",[301])
+			return hubspot.deal.associate(-99,"CONTACT",[vid])
 			.catch(err => {
 				assert(err.response.status == 404)
 			})
 		})
 	})
 
+	describe("Remove Associate Object",function(){
+		it('success',function(){
+			return hubspot.deal.associate(dealID,"CONTACT",[vid])
+			.then(data => {
+				assert(data.status == 204)
+			})
+		})
+		it('FAIL',function(){
+			return hubspot.deal.associate(-99,"CONTACT",[vid])
+			.catch(err => {
+				assert(err.response.status == 404)
+			})
+		})
+	})
+
+	describe('Get Associated Deals',function(){
+		it('success',function(){
+			return hubspot.deal.getAssociatedDeals("CONTACT",vid)
+			.then(data => {
+				assert(data != null)
+			})
+		})
+		it('FAIL',function(){
+			return hubspot.deal.getAssociatedDeals("CONTACT",-99)
+			.catch(err => {
+				assert(err.response.status == 404)
+			})
+		})
+	})
 })

@@ -25,7 +25,7 @@ exports.deal = {
 			})
 		}
 	},
-	update: (dealID,properties) =>{
+	update: (dealID,properties) => {
 		var endpoint =  `https://api.hubapi.com/deals/v1/deal/` + dealID
 		if(hubCache.get("config").type == "hapikey"){
 			endpoint += `?hapikey=` + hubCache.get("config").value
@@ -68,7 +68,7 @@ exports.deal = {
 				throw err
 			})
 	},
-	delete: (dealID,portalID) =>{
+	delete: (dealID,portalID) => {
 		var endpoint =  `https://api.hubapi.com/deals/v1/deal/` + dealID + "?portalId=" + portalID
 		if(hubCache.get("config").type == "hapikey"){
 			endpoint += `&hapikey=` + hubCache.get("config").value
@@ -214,7 +214,9 @@ function getDeals(properties){
 				    .then(response =>{
 				    deals = deals.concat(response.data.deals)
 				    if (response.data['hasMore']){
-				      toCall(response.data['offset'])      
+				    	setTimeout(function(){
+				    		toCall(response.data['offset'])      		
+				    	},101)
 				    }else{    	
 				    	resolve(deals)
 				    }
@@ -254,7 +256,9 @@ function getDeals(properties){
 				    .then(response =>{
 				    deals = deals.concat(response.data.deals)
 				    if (response.data['hasMore']){
-				      toCall(response.data['offset'])      
+				    	setTimeout(function(){
+				    		toCall(response.data['offset'])      		
+				    	},101)
 				    }else{    	
 				    	resolve(deals)
 				    }
@@ -313,7 +317,9 @@ function getRecentlyModifiedDeals(){
 				    .then(response =>{
 				    deals = deals.concat(response.data.deals)
 				    if (response.data['hasMore']){
-				      toCall(response.data['offset'])      
+				    	setTimeout(function(){
+				    		toCall(response.data['offset'])      		
+				    	},101)
 				    }else{    	
 				    	resolve(deals)
 				    }
@@ -353,7 +359,9 @@ function getRecentlyModifiedDeals(){
 				    .then(response =>{
 				    deals = deals.concat(response.data.deals)
 				    if (response.data['hasMore']){
-				      toCall(response.data['offset'])      
+				    	setTimeout(function(){
+				    		toCall(response.data['offset'])      		
+				    	},101)				      
 				    }else{    	
 				    	resolve(deals)
 				    }
@@ -411,7 +419,9 @@ function getRecentlyCreatedDeals(){
 				    .then(response =>{
 				    deals = deals.concat(response.data.deals)
 				    if (response.data['hasMore']){
-				      toCall(response.data['offset'])      
+				    	setTimeout(function(){
+				    		toCall(response.data['offset'])      		
+				    	},101)
 				    }else{    	
 				    	resolve(deals)
 				    }
@@ -451,7 +461,9 @@ function getRecentlyCreatedDeals(){
 				    .then(response =>{
 				    deals = deals.concat(response.data.deals)
 				    if (response.data['hasMore']){
-				      toCall(response.data['offset'])      
+				    	setTimeout(function(){
+				    		toCall(response.data['offset'])      
+				    	},101)
 				    }else{    	
 				    	resolve(deals)
 				    }
@@ -510,7 +522,9 @@ function getAssociatedDealsOfObject(objType,id){
 				    .then(response =>{
 				    deals = deals.concat(response.data.deals)
 				    if (response.data['hasMore']){
-				      toCall(response.data['offset'])      
+				    	setTimeout(function(){
+				    		toCall(response.data['offset'])      		
+				    	})
 				    }else{    	
 				    	resolve(deals)
 				    }
@@ -550,7 +564,9 @@ function getAssociatedDealsOfObject(objType,id){
 				    .then(response =>{
 				    deals = deals.concat(response.data.deals)
 				    if (response.data['hasMore']){
-				      toCall(response.data['offset'])      
+				    	setTimeout(function(){
+				    		toCall(response.data['offset'])      		
+				    	},101)
 				    }else{    	
 				    	resolve(deals)
 				    }

@@ -6,10 +6,10 @@ var assert = require('assert')
 var portalID = 2323210
 var randNum = Math.random() * 100
 var companyID = 348915390
-var company2Delete = 280543319
+var company2Delete = 313912152
 
 
-var token = "CK77ivmbKxICXwEYiuaNASCRtLUBKLSqAjIZAEL7khPaiCiSiXdHlXSuHsnIvOfQwOzcUg"
+var token = "CKeKrNmfKxICXwEYiuaNASCRtLUBKKCjAjIZAEL7khOwgSSJ-ubkD4vzceDda2eQbagvNw"
 var options = {type:"hapikey",value:"e5ca5aac-d9e0-4d2c-aeed-93179d563c6c"}
 //var options = {type:"oauth" , value:token}
 

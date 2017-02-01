@@ -54,7 +54,7 @@ exports.contact = {
 		}
 		
 	},
-	create: properties =>{
+	create: properties => {
 		var endpoint =  `https://api.hubapi.com/contacts/v1/contact/`
 		if(hubCache.get("config").type == "hapikey"){
 			endpoint += `?hapikey=` + hubCache.get("config").value
@@ -74,7 +74,7 @@ exports.contact = {
 			})
 		}
 	},
-	createOrUpdate: (email,properties) =>{
+	createOrUpdate: (email,properties) => {
 		var endpoint =  `https://api.hubapi.com/contacts/v1/contact/createOrUpdate/email/`+ email + `/`
 		if(hubCache.get("config").type == "hapikey"){
 			endpoint += `?hapikey=` + hubCache.get("config").value
@@ -94,7 +94,7 @@ exports.contact = {
 			})
 		}
 	},
-	update: (vid,properties) =>{
+	update: (vid,properties) => {
 		var endpoint =  `https://api.hubapi.com/contacts/v1/contact/vid/` + vid + `/profile`
 		if(hubCache.get("config").type == "hapikey"){
 			endpoint += `?hapikey=` + hubCache.get("config").value
@@ -114,7 +114,7 @@ exports.contact = {
 			})
 		}
 	},
-	updateByEmail: (email,properties) =>{
+	updateByEmail: (email,properties) => {
 		var endpoint =   `https://api.hubapi.com/contacts/v1/contact/email/`+ email + `/profile`
 		if(hubCache.get("config").type == "hapikey"){
 			endpoint += `?hapikey=` + hubCache.get("config").value
@@ -134,7 +134,7 @@ exports.contact = {
 			})
 		}
 	},
-	delete: vid =>{
+	delete: vid => {
 		var endpoint = `https://api.hubapi.com/contacts/v1/contact/vid/` + vid
 		if(hubCache.get("config").type == "hapikey"){
 			endpoint += `?hapikey=` + hubCache.get("config").value
@@ -154,7 +154,7 @@ exports.contact = {
 			})
 		}
 	},
-	search: query =>{
+	search: query => {
 		var endpoint = `https://api.hubapi.com/contacts/v1/search/query?q=` + query
 		if(hubCache.get("config").type == "hapikey"){
 			endpoint += `&hapikey=` + hubCache.get("config").value
@@ -174,7 +174,7 @@ exports.contact = {
 			})
 		}
 	},
-	getBatchByID: (vids,properties) =>{
+	getBatchByID: (vids,properties) => {
 		var vidString = ""
 		if(vids){
 			for(var i = 0; i < vids.length; i++){
@@ -210,7 +210,7 @@ exports.contact = {
 			})
 		}
 	},
-	getBatchByEmail: (emails,properties,portalID) =>{
+	getBatchByEmail: (emails,properties,portalID) => {
 		var emailString = ""
 		if(emails){
 			for(var i = 0; i < emails.length; i++){				
@@ -242,7 +242,7 @@ exports.contact = {
 			})
 		}
 	},
-	getByUTK: utk =>{
+	getByUTK: utk => {
 		var endpoint = `http://api.hubapi.com/contacts/v1/contact/utk/`+ utk + `/profile`
 		if(hubCache.get("config").type == "hapikey"){
 			endpoint += `?hapikey=` + hubCache.get("config").value
@@ -262,7 +262,7 @@ exports.contact = {
 			})
 		}
 	},
-	getBatchByUTK: (utks,properties) =>{
+	getBatchByUTK: (utks,properties) => {
 		var utkString = ""
 		if(utks){
 			for(var i = 0; i < utks.length; i++){	
@@ -369,7 +369,9 @@ function getContacts(properties){
 				    .then(response =>{
 				    contacts = contacts.concat(response.data.contacts)
 				    if (response.data['has-more']){
-				      toCall(response.data['vid-offset'])      
+				    	setTimeout(function(){
+				    		toCall(response.data['vid-offset'])      		
+				    	},101)
 				    }else{    	
 				    	resolve(contacts)
 				    }
@@ -410,7 +412,9 @@ function getContacts(properties){
 				    .then(response =>{
 				    contacts = contacts.concat(response.data.contacts)
 				    if (response.data['has-more']){
-				      toCall(response.data['vid-offset'])      
+				    	setTimeout(function(){
+				    		toCall(response.data['vid-offset'])      		
+				    	})
 				    }else{    	
 				    	resolve(contacts)
 				    }
@@ -476,7 +480,9 @@ function getRecentContacts(properties){
 				    .then(response =>{
 				    contacts = contacts.concat(response.data.contacts)
 				    if (response.data['has-more']){
-				      toCall(response.data['vid-offset'],response.data['time-offset'])      
+				    	setTimeout(function(){
+				    		toCall(response.data['vid-offset'],response.data['time-offset'])      		
+				    	},101)
 				    }else{    	
 				    	resolve(contacts)
 				    }
@@ -517,7 +523,9 @@ function getRecentContacts(properties){
 				    .then(response =>{
 				    contacts = contacts.concat(response.data.contacts)
 				    if (response.data['has-more']){
-				      toCall(response.data['vid-offset'],response.data['time-offset'])      
+				    	setTimeout(function(){
+				    		toCall(response.data['vid-offset'],response.data['time-offset'])      		
+				    	},101)
 				    }else{    	
 				    	resolve(contacts)
 				    }
