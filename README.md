@@ -115,49 +115,49 @@ init = obj =>
 
 Contacts -->
 ----------------------
-getAll: [properties] =>
-getRecent: [properties] =>
-getByEmail: email =>
-getByID: id =>
-create: properties =>
-createOrUpdate: (email,properties) =>
-update: (vid,properties) =>
-updateByEmail: (email,properties) => 
-updateByEmail: (email,properties) =>
-delete: vid => 
-search: query => 
-getBatchByID: (vids,properties) =>
-getBatchByEmail: (emails,properties,portalID) =>
-getByUTK: utk =>
-getBatchByUTK: (utks,properties) => 
-merge: (vidPrimary,vidSecondary) =>
-createOrUpdateByBatch: body =>
+- getAll: [properties] =>
+- getRecent: [properties] =>
+- getByEmail: email =>
+- getByID: id =>
+- create: properties =>
+- createOrUpdate: (email,properties) =>
+- update: (vid,properties) =>
+- updateByEmail: (email,properties) => 
+- updateByEmail: (email,properties) =>
+- delete: vid => 
+- search: query => 
+- getBatchByID: (vids,properties) =>
+- getBatchByEmail: (emails,properties,portalID) =>
+- getByUTK: utk =>
+- getBatchByUTK: (utks,properties) => 
+- merge: (vidPrimary,vidSecondary) =>
+- createOrUpdateByBatch: body =>
 
 Companies -->
 ----------------------
 
-create: properties => 
-update: (companyID,properties) => 
-delete: (id,portalID) => 
-getAll: [properties] =>
-getRecentlyModified: () =>
-getRecentlyCreated: () =>
-getByDomain: domain =>
-getByID: id =>
-getContactsByCompanyID: (companyID,portalID) =>
-getContactIDsByCompanyID: (companyID,portalID) =>
-addContactToCompany: (companyID,vid) =>
-removeContactFromCompany: (companyID,vid) =>
+- create: properties => 
+- update: (companyID,properties) => 
+- delete: (id,portalID) => 
+- getAll: [properties] =>
+- getRecentlyModified: () =>
+- getRecentlyCreated: () =>
+- getByDomain: domain =>
+- getByID: id =>
+- getContactsByCompanyID: (companyID,portalID) =>
+- getContactIDsByCompanyID: (companyID,portalID) =>
+- addContactToCompany: (companyID,vid) =>
+- removeContactFromCompany: (companyID,vid) =>
 
 Deals -->
 ----------------------
-create: body =>
-update: (dealID,properties) =>
-getAll: [properties] =>
-getRecentlyModified: () =>
-getRecentlyCreated: () =>
-delete: (dealID,portalID) =>
-getByID: id =>
-associate: (dealID,objType,objIDs) =>
-removeAssociateObject: (dealID,objType,objIDs) =>
-getAssociatedDeals: (objType, id) =>
+- create: body =>
+- update: (dealID,properties) =>
+- getAll: [properties] =>
+- getRecentlyModified: () =>
+- getRecentlyCreated: () =>
+- delete: (dealID,portalID) =>
+- getByID: id =>
+- associate: (dealID,objType,objIDs) =>
+- removeAssociateObject: (dealID,objType,objIDs) =>
+- getAssociatedDeals: (objType, id) =>
