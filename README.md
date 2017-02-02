@@ -33,14 +33,16 @@ or
 	var hapikey = xxxxx
 	var options = {type"hapikey",value: hapikey}
 
-This package is a promise based package. All of the functions will return a promise to you.  
+This package is a promise based package. All of the functions will return a 
+promise to you.  
 
 There are 3 objects beyone the init object you can work with. 
 1. contact
 2. company
 3. deal
 
-An example of calling one of the functions below would then look like this below while printing the results to the terminal/console. 
+An example of calling one of the functions below would then look like this 
+below while printing the results to the terminal/console. 
 
 	var hubspot = require('hubspot-api-wrapper')
 
