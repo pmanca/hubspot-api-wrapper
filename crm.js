@@ -3,7 +3,8 @@ var hubCache = require('./init').hubCache
 var contact = require('./contact').contact
 var company = require('./company').company
 var deal = require('./deal').deal
-
+//do inverse
+//do combo
 exports.crm = {
 	createContactAndAssociateToCompany: (properties,companyID) => {
 
