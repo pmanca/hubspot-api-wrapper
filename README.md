@@ -5,7 +5,7 @@ servers.  Version 0.1 on release will support contacts companies and deals
 endpoints
 
 
-Author: Peter Manca(Hubspotter)
+Author: Peter Manca (Hubspotter)
 
 The fist thing you need to do to be able to call any of the functions listed 
 below is to initialize your credentials.  This package can handle oauth2 or 
