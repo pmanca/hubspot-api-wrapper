@@ -19,8 +19,5 @@ exports.crm = {
 			}).catch(err =>{
 				return err
 			})
-		
-		
-		
 	}
 }
