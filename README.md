@@ -163,3 +163,10 @@ Deals -->
 - associate: (dealID,objType,objIDs) =>
 - removeAssociateObject: (dealID,objType,objIDs) =>
 - getAssociatedDeals: (objType, id) =>
+
+
+
+
+
+You can run the tests.js file to run the Mocha test script with some minor 
+adjustments to the files in the test folder. 
