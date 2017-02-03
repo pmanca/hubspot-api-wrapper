@@ -1,5 +1,5 @@
 {
-  "name": "HubSpot-Package",
+  "name": "hubspot-api-wrapper",
   "version": "0.1.0",
   "description": "HubSpot API module",
   "main": "index.js",
