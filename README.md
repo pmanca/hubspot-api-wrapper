@@ -36,7 +36,7 @@ or
 This package is a promise based package. All of the functions will return a 
 promise to you.  
 
-There are 3 objects beyone the init object you can work with. 
+There are 3 objects beyond the init object you can work with. 
 1. contact
 2. company
 3. deal
@@ -96,7 +96,7 @@ some of the parameters as in how to create a deal above.
 
 
 
-Functions availible
+Functions available
 Notes:
 Below are the function definitions
 1.() means no parameters
