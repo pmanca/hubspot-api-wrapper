@@ -106,6 +106,7 @@ they are a number or if there are multiple strings as in get by batch they
 will be in an array.  Some of the endpoints that involve the properties that 
 are not optional will require objects.  You can see examples of the 
 structure at developers.hubspot.com
+
 Init -->
 ---------------------
 
