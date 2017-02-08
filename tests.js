@@ -2,3 +2,4 @@
 //require('./test/testCompany.js')
 //require('./test/testDeal.js')
 require('./test/testOwner.js')
+require('./test/testEngagement.js')

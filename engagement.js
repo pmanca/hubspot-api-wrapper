@@ -117,7 +117,7 @@ exports.engagement = {
 
 function getEngagements(){
 	var engagements = []
-	console.log("oh hey")
+	
 	return new Promise(function(resolve,reject){
 		
 		toCall(0)
