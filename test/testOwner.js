@@ -5,7 +5,7 @@ var hubspot = require('../index')
 var assert = require('assert')
 
 var token = "CLeeqdmhKxICXwEYiuaNASCRtLUBKKCjAjIZAEL7khOzw7aSN5HQ8jBr7LSU3QvjN7DMEA"
-//var options = {type:"hapikey",value:"e5ca5aac-d9e0-4d2c-aeed-93179d563c6c"}
+//var options = {type:"hapikey",value:"xxxxx"}
 var options = {type:"oauth" , value:token}
 
 
@@ -27,8 +27,8 @@ describe('Testing The Owner Endpoints -->',function(){
 	describe('Get owner by email',function(){
 		it("success",function(){
 			hubspot.owner.getByEmail("pmanca@hubspot.com")
-			.then(result => {
-				assert(result.status == 200)
+			.then(data => {
+				assert(data.status == 200)
 			})
 		})
 		it("FAIL",function(){
@@ -42,8 +42,8 @@ describe('Testing The Owner Endpoints -->',function(){
 	describe('Get all owners',function(){
 		it("success",function(){
 			hubspot.owner.getAll()
-			.then(result => {
-				assert(result.status == 200)
+			.then(data => {
+				assert(data.status == 200)
 			})
 		})
 	})
