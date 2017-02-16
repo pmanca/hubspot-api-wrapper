@@ -9,9 +9,9 @@ var dealID = 59275105
 var ownerID = 15149075
 
 
-var token = "CLeeqdmhKxICXwEYiuaNASCRtLUBKKCjAjIZAEL7khOzw7aSN5HQ8jBr7LSU3QvjN7DMEA"
-//var options = {type:"hapikey",value:"xxxxx"}
-var options = {type:"oauth" , value:token}
+//var token = "CLeeqdmhKxICXwEYiuaNASCRtLUBKKCjAjIZAEL7khOzw7aSN5HQ8jBr7LSU3QvjN7DMEA"
+var options = {type:"hapikey",value:"xxxxx"}
+//var options = {type:"oauth" , value:token}
 
 var contact = {
   "properties": [
@@ -59,11 +59,18 @@ describe('Testing The CRM Endpoints -->',function(){
 		},500)
 	})
 
+	describe('set up the auth',function(){		
+		it("success",function(){
+			var result = hubspot.init(options)
+			assert(result == true)
+		})
+	})
+
 	describe("Testing the create contact and associate to deal",function(){
 		it("success",function(){
 			hubspot.crm.createContactAndAssociateToDeal(contact,dealID)
-			.then(result => {
-				assert(result.status == 200)
+			.then(data => {
+				assert(data.status == 200)
 			})
 		})
 		it("FAIL",function(){
@@ -77,8 +84,8 @@ describe('Testing The CRM Endpoints -->',function(){
 	describe("Testing the create contact and associate to company",function(){
 		it("success",function(){
 			hubspot.crm.createContactAndAssociateToCompany(contact,companyID)
-			.then(result => {
-				assert(result.status == 200)
+			.then(data => {
+				assert(data.status == 200)
 			})
 		})
 		it("FAIL",function(){
@@ -90,7 +97,18 @@ describe('Testing The CRM Endpoints -->',function(){
 	})
 
 	describe("Create an engagement and associate it to a contact",function(){
-		
+		it("success",function(){
+			hubspot.crm.createEngagementAndAssociateToContact(engagement,301)
+			.then(data => {
+				assert(data.status == 200)
+			})
+		})
+		it("FAIL",function(){
+			hubspot.crm.createEngagementAndAssociateToContact(engagement,-99)
+			.catch(err => {
+				assert(err.response.status == 404)
+			})
+		})
 	})
 
 })
