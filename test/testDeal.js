@@ -8,9 +8,10 @@ var randNum = Math.random() * 100
 var dealID = 85363503
 var deal2Delete = 85359153
 var vid = 22851
+
 var token = "CKeKrNmfKxICXwEYiuaNASCRtLUBKKCjAjIZAEL7khOwgSSJ-ubkD4vzceDda2eQbagvNw"
-var options = {type:"hapikey",value:"e5ca5aac-d9e0-4d2c-aeed-93179d563c6c"}
-//var options = {type:"oauth" , value:token}
+//var options = {type:"hapikey",value:"xxxxx"}
+var options = {type:"oauth" , value:token}
 
 var deal2Update = {
   "properties": [

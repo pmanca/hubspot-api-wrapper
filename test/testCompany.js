@@ -10,8 +10,8 @@ var company2Delete = 313912152
 
 
 var token = "CKeKrNmfKxICXwEYiuaNASCRtLUBKKCjAjIZAEL7khOwgSSJ-ubkD4vzceDda2eQbagvNw"
-var options = {type:"hapikey",value:"e5ca5aac-d9e0-4d2c-aeed-93179d563c6c"}
-//var options = {type:"oauth" , value:token}
+//var options = {type:"hapikey",value:"xxxxx"}
+var options = {type:"oauth" , value:token}
 
 var company2Create = {
     "properties": [
