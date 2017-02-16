@@ -27,7 +27,7 @@ var company2Create = {
 }
 
 
-describe('Testing the company endpoints',function(){
+describe('Testing the company endpoints -->',function(){
 	this.timeout(2500)
 	beforeEach(function(done){
 		setTimeout(function(){

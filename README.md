@@ -1,7 +1,11 @@
 # HubSpot-API-Wrapper
 
-Version 0.1, upon release, will support contacts, companies, and deal 
-endpoints. 
+
+Promised based node package to assist with making API calls to the HubSpot 
+servers.  Version 0.1 on release will support contacts companies and deals 
+endpoints
+
+
 
 
 Author: Peter Manca(Hubspotter)
@@ -99,8 +103,9 @@ some of the parameters as in how to create a deal above.
 
 
 
-Available Functions Notes:
 
+Functions available
+Notes:
 
 Below are the function definitions
 1.() means no parameters
