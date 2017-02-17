@@ -7,7 +7,6 @@ endpoints
 
 
 
-
 Author: Peter Manca(Hubspotter)
 
 0.1.x is the first release of this package.  I have the github repo posted 
