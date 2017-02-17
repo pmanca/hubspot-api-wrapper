@@ -174,6 +174,26 @@ Deals -->
 - removeAssociateObject: (dealID,objType,objIDs) =>
 - getAssociatedDeals: (objType, id) =>
 
+Owner -->
+---------------------
+- getByEmail: email =>
+- getAll: (includeInactive) =>
+
+Engagements --> 
+---------------------
+- create: (properties) =>
+- update: (id,properties) =>
+- getByID: id =>
+- delete: id =>
+- associate: (id,objType,objID) =>
+- getAll: () =>
+- getAssociatedEngagements: (objType,objID) =>
+
+CRM --> 
+---------------------
+- createContactAndAssociateToCompany: (properties,companyID) =>
+- createContactAndAssociateToDeal: (properties,dealID) =>
+- createEngagementAndAssociateToContact: (properties,vid) =>
 
 
 
