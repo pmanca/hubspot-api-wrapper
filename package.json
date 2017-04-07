@@ -11,5 +11,8 @@
   "homepage": "https://github.com/pmanca/hubspot-api-wrapper",
   "devDependencies": {
     "mocha": "^3.2.0"
+  },
+  "scripts": {
+    "test": "mocha"
   }
 }
