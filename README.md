@@ -195,6 +195,10 @@ CRM -->
 - createContactAndAssociateToDeal: (properties,dealID) =>
 - createEngagementAndAssociateToContact: (properties,vid) =>
 
+Util -->
+---------------------
+- getDailyUsage: () =>
+
 
 
 

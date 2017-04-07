@@ -1,36 +1,64 @@
 0 info it worked if it ends with ok
-1 verbose cli [ '/usr/local/bin/node',
-1 verbose cli   '/usr/local/bin/npm',
-1 verbose cli   'version',
-1 verbose cli   'minor' ]
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'login' ]
 2 info using npm@3.10.10
 3 info using node@v6.10.0
-4 info git [ 'status', '--porcelain' ]
-5 verbose stack Error: Git working directory not clean.
-5 verbose stack M index.js
-5 verbose stack M package.json
-5 verbose stack M tests.js
-5 verbose stack M yarn.lock
-5 verbose stack     at /usr/local/lib/node_modules/npm/lib/version.js:247:19
-5 verbose stack     at /usr/local/lib/node_modules/npm/lib/utils/no-progress-while-running.js:21:8
-5 verbose stack     at ChildProcess.exithandler (child_process.js:197:7)
-5 verbose stack     at emitTwo (events.js:106:13)
-5 verbose stack     at ChildProcess.emit (events.js:191:7)
-5 verbose stack     at maybeClose (internal/child_process.js:877:16)
-5 verbose stack     at Socket.<anonymous> (internal/child_process.js:334:11)
-5 verbose stack     at emitOne (events.js:96:13)
-5 verbose stack     at Socket.emit (events.js:188:7)
-5 verbose stack     at Pipe._handle.close [as _onclose] (net.js:498:12)
-6 verbose cwd /Users/pmanca/Google Drive/JavaScript/code/Peter/hubSpot-api-wrapper
-7 error Darwin 16.5.0
-8 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "version" "minor"
-9 error node v6.10.0
-10 error npm  v3.10.10
-11 error Git working directory not clean.
-11 error M index.js
-11 error M package.json
-11 error M tests.js
-11 error M yarn.lock
-12 error If you need help, you may report this error at:
-12 error     <https://github.com/npm/npm/issues>
-13 verbose exit [ 1, true ]
+4 verbose adduser before first PUT { _id: 'org.couchdb.user:pmanca',
+4 verbose adduser   name: 'pmanca',
+4 verbose adduser   password: 'XXXXX',
+4 verbose adduser   email: 'pmanca@hubspot.com',
+4 verbose adduser   type: 'user',
+4 verbose adduser   roles: [],
+4 verbose adduser   date: '2017-04-07T12:53:26.988Z' }
+5 verbose request uri https://npm.hubteam.com/nexus/content/groups/npm-all/-/user/org.couchdb.user:pmanca
+6 verbose request new user, so can't send auth
+7 info attempt registry request try #1 at 8:53:26 AM
+8 verbose request id 8336861b7b81d2ad
+9 http request PUT https://npm.hubteam.com/nexus/content/groups/npm-all/-/user/org.couchdb.user:pmanca
+10 http 401 https://npm.hubteam.com/nexus/content/groups/npm-all/-/user/org.couchdb.user:pmanca
+11 verbose headers { date: 'Fri, 07 Apr 2017 12:53:27 GMT',
+11 verbose headers   server: 'nginx/1.10.2',
+11 verbose headers   'www-authenticate': 'BASIC realm="Nexus Repository Manager"',
+11 verbose headers   'x-content-type-options': 'nosniff',
+11 verbose headers   'x-frame-options': 'SAMEORIGIN',
+11 verbose headers   'content-length': '0',
+11 verbose headers   connection: 'keep-alive' }
+12 verbose request invalidating /Users/pmanca/.npm/npm.hubteam.com/nexus/content/groups/npm-all/-/user/org.couchdb.user_3Apmanca on PUT
+13 verbose adduser back [ { Error: 401 Unauthorized
+13 verbose adduser       at makeError (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:302:12)
+13 verbose adduser       at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:253:9)
+13 verbose adduser       at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:210:14)
+13 verbose adduser       at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:187:22)
+13 verbose adduser       at emitTwo (events.js:106:13)
+13 verbose adduser       at Request.emit (events.js:191:7)
+13 verbose adduser       at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1048:10)
+13 verbose adduser       at emitOne (events.js:96:13)
+13 verbose adduser       at Request.emit (events.js:188:7)
+13 verbose adduser       at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:969:12) statusCode: 401, code: 'E401' },
+13 verbose adduser   null,
+13 verbose adduser   undefined ]
+14 warn adduser Incorrect username or password
+14 warn adduser You can reset your account by visiting:
+14 warn adduser
+14 warn adduser     https://npmjs.org/forgot
+15 verbose stack Error: 401 Unauthorized
+15 verbose stack     at makeError (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:302:12)
+15 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:253:9)
+15 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:210:14)
+15 verbose stack     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:187:22)
+15 verbose stack     at emitTwo (events.js:106:13)
+15 verbose stack     at Request.emit (events.js:191:7)
+15 verbose stack     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1048:10)
+15 verbose stack     at emitOne (events.js:96:13)
+15 verbose stack     at Request.emit (events.js:188:7)
+15 verbose stack     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:969:12)
+16 verbose statusCode 401
+17 verbose cwd /Users/pmanca/Google Drive/JavaScript/code/Peter/hubSpot-api-wrapper
+18 error Darwin 16.5.0
+19 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "login"
+20 error node v6.10.0
+21 error npm  v3.10.10
+22 error code E401
+23 error 401 Unauthorized
+24 error If you need help, you may report this error at:
+24 error     <https://github.com/npm/npm/issues>
+25 verbose exit [ 1, true ]
