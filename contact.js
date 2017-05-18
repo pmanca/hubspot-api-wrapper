@@ -262,43 +262,45 @@ exports.contact = {
 			})
 		}
 	},
-	getBatchByUTK: (utks,properties) => {
-		var utkString = ""
-		if(utks){
-			for(var i = 0; i < utks.length; i++){	
-				if(i == 0){
-					utkString += "utk=" + utks[i]						
-				}else{
-					utkString += "&utk=" + utks[i]					
-				}			
+	//This endpoint was unpublished as of 5/18/2018
+	//I don't know when this will be unscoped
+	// getBatchByUTK: (utks,properties) => {
+	// 	var utkString = ""
+	// 	if(utks){
+	// 		for(var i = 0; i < utks.length; i++){	
+	// 			if(i == 0){
+	// 				utkString += "utk=" + utks[i]						
+	// 			}else{
+	// 				utkString += "&utk=" + utks[i]					
+	// 			}			
 				
-			}	
-		}
-		var propString = ""
-		if(properties){
-			for(var i = 0; i < properties.length; i++){
-				propString += "&property=" + properties[i]
-			}	
-		}
-		var endpoint = `http://api.hubapi.com/contacts/v1/contact/utks/batch/?` + utkString + propString
-		if(hubCache.get("config").type == "hapikey"){
-			endpoint += `&hapikey=` + hubCache.get("config").value
-			return axios.get(endpoint).then(response =>{
-				return response
-			}).catch(err =>{
-				return err
-			})
-		}else{
-			var token = hubCache.get("config").value
-			return axios.get(endpoint,
-				{headers: {"Authorization": "Bearer " + token }
-			}).then(response => {
-				return response
-			}).catch(err => {
-				return err
-			})
-		}
-	},
+	// 		}	
+	// 	}
+	// 	var propString = ""
+	// 	if(properties){
+	// 		for(var i = 0; i < properties.length; i++){
+	// 			propString += "&property=" + properties[i]
+	// 		}	
+	// 	}
+	// 	var endpoint = `http://api.hubapi.com/contacts/v1/contact/utks/batch/?` + utkString + propString
+	// 	if(hubCache.get("config").type == "hapikey"){
+	// 		endpoint += `&hapikey=` + hubCache.get("config").value
+	// 		return axios.get(endpoint).then(response =>{
+	// 			return response
+	// 		}).catch(err =>{
+	// 			return err
+	// 		})
+	// 	}else{
+	// 		var token = hubCache.get("config").value
+	// 		return axios.get(endpoint,
+	// 			{headers: {"Authorization": "Bearer " + token }
+	// 		}).then(response => {
+	// 			return response
+	// 		}).catch(err => {
+	// 			return err
+	// 		})
+	// 	}
+	// },
 	merge: (vidPrimary,vidSecondary) => {
 		var body = {
 			"vidToMerge": vidSecondary

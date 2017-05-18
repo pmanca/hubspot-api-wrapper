@@ -141,7 +141,6 @@ Contacts -->
 - getBatchByID: (vids,properties) =>
 - getBatchByEmail: (emails,properties,portalID) =>
 - getByUTK: utk =>
-- getBatchByUTK: (utks,properties) => 
 - merge: (vidPrimary,vidSecondary) =>
 - createOrUpdateByBatch: body =>
 
