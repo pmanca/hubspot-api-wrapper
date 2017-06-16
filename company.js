@@ -187,7 +187,7 @@ function getCompanies(properties){
 	var endpoint = `https://api.hubapi.com/companies/v2/companies/paged`
 	if(properties){
 		for(var i = 0; i < properties.length; i++){
-			propString += "&property=" + properties[i]
+			propString += "&properties=" + properties[i]
 		}	
 	}
 	
