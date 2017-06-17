@@ -38,7 +38,7 @@ must be a string)-->
 or 
 
 	var hapikey = xxxxx
-	var options = {type"hapikey",value: hapikey}
+	var options = {type:"hapikey",value: hapikey}
 
 This package is a promise based package. All of the functions will return a 
 promise to you.  
