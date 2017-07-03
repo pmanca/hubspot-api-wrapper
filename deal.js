@@ -210,7 +210,7 @@ function getDeals(properties){
 				//update the key
 				if(hubCache.get("config").type == "hapikey"){
 					var key = hubCache.get("config").value
-					axios.get(endpoint + "?hapikey=" + key + '&offset=' + offset + propString)
+					axios.get(endpoint + "?hapikey=" + key + '&limit=200' + '&offset=' + offset + propString)
 				    .then(response =>{
 				    deals = deals.concat(response.data.deals)
 				    if (response.data['hasMore']){
@@ -313,7 +313,7 @@ function getRecentlyModifiedDeals(){
 				//update the key
 				if(hubCache.get("config").type == "hapikey"){
 					var key = hubCache.get("config").value
-					axios.get(endpoint + "?hapikey=" + key + '&offset=' + offset)
+					axios.get(endpoint + "?hapikey=" + key + '&count=100' + '&offset=' + offset)
 				    .then(response =>{
 				    deals = deals.concat(response.data.deals)
 				    if (response.data['hasMore']){
@@ -353,7 +353,7 @@ function getRecentlyModifiedDeals(){
 				  })
 				}else{
 					var token = hubCache.get("config").value
-					axios.get(endpoint + '?offset=' + offset,
+					axios.get(endpoint + '&count=100' + '?offset=' + offset,
 						{headers: {"Authorization": "Bearer " + token }
 					})
 				    .then(response =>{
@@ -415,7 +415,7 @@ function getRecentlyCreatedDeals(){
 				//update the key
 				if(hubCache.get("config").type == "hapikey"){
 					var key = hubCache.get("config").value
-					axios.get(endpoint + "?hapikey=" + key + '&offset=' + offset)
+					axios.get(endpoint + "?hapikey=" + key + '&count=100' + '&offset=' + offset)
 				    .then(response =>{
 				    deals = deals.concat(response.data.deals)
 				    if (response.data['hasMore']){
@@ -455,7 +455,7 @@ function getRecentlyCreatedDeals(){
 				  })
 				}else{
 					var token = hubCache.get("config").value
-					axios.get(endpoint + '?offset=' + offset,
+					axios.get(endpoint + '&count=100' + '?offset=' + offset,
 						{headers: {"Authorization": "Bearer " + token }
 					})
 				    .then(response =>{

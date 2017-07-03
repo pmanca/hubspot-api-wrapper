@@ -199,7 +199,7 @@ function getCompanies(properties){
 				//update the key
 				if(hubCache.get("config").type == "hapikey"){
 					var key = hubCache.get("config").value
-					axios.get(endpoint + "?hapikey=" + key + '&offset=' + offset + propString)
+					axios.get(endpoint + "?hapikey=" + key + '&limit=200' + '&offset=' + offset + propString)
 				    .then(response =>{
 				    companies = companies.concat(response.data.companies)
 				    if (response.data['has-more']){
@@ -240,7 +240,7 @@ function getCompanies(properties){
 				  })
 				}else{
 					var token = hubCache.get("config").value
-					axios.get(endpoint + '?offset=' + offset + propString,
+					axios.get(endpoint + '?offset=' + offset + '&limit=200' + propString,
 						{headers: {"Authorization": "Bearer " + token }
 					})
 				    .then(response =>{
@@ -303,7 +303,7 @@ function getRecentlyModifiedCompanies(){
 				//update the key
 				if(hubCache.get("config").type == "hapikey"){
 					var key = hubCache.get("config").value
-					axios.get(endpoint + "?hapikey=" + key + '&offset=' + offset)
+					axios.get(endpoint + "?hapikey=" + key + '&count=100' + '&offset=' + offset)
 				    .then(response =>{
 				    companies = companies.concat(response.data.results)
 				    if (response.data['hasMore']){
@@ -344,7 +344,7 @@ function getRecentlyModifiedCompanies(){
 				  })
 				}else{
 					var token = hubCache.get("config").value
-					axios.get(endpoint + '?offset=' + offset,
+					axios.get(endpoint + '?offset=' + offset + '&count=100',
 						{headers: {"Authorization": "Bearer " + token }
 					})
 				    .then(response =>{
@@ -408,7 +408,7 @@ function getRecentlyCreatedCompanies(){
 				//update the key
 				if(hubCache.get("config").type == "hapikey"){
 					var key = hubCache.get("config").value
-					axios.get(endpoint + "?hapikey=" + key + '&offset=' + offset)
+					axios.get(endpoint + "?hapikey=" + key + '&count=100' + '&offset=' + offset)
 				    .then(response =>{
 				    companies = companies.concat(response.data.results)
 				    if (response.data['hasMore']){
@@ -449,7 +449,7 @@ function getRecentlyCreatedCompanies(){
 				  })
 				}else{
 					var token = hubCache.get("config").value
-					axios.get(endpoint + '?offset=' + offset,
+					axios.get(endpoint + '?offset=' + offset + '&count=100',
 						{headers: {"Authorization": "Bearer " + token }
 					})
 				    .then(response =>{

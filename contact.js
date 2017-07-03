@@ -367,7 +367,7 @@ function getContacts(properties){
 				if(hubCache.get("config").type == "hapikey"){
 					var key = hubCache.get("config").value
 					var hapiEndpoint = 'https://api.hubapi.com/contacts/v1/lists/all/contacts/all?hapikey='
-					axios.get(hapiEndpoint + key + '&vidOffset=' + vid + propString)
+					axios.get(hapiEndpoint + key + '&count=100' + '&vidOffset=' + vid + propString)
 				    .then(response =>{
 				    contacts = contacts.concat(response.data.contacts)
 				    if (response.data['has-more']){
@@ -408,7 +408,7 @@ function getContacts(properties){
 				}else{
 					var token = hubCache.get("config").value
 					var hapiEndpoint = 'https://api.hubapi.com/contacts/v1/lists/all/contacts/all?'
-					axios.get(hapiEndpoint + 'vidOffset=' + vid + propString,
+					axios.get(hapiEndpoint + '&count=100' + 'vidOffset=' + vid + propString,
 						{headers: {"Authorization": "Bearer " + token }
 					})
 				    .then(response =>{
@@ -478,7 +478,7 @@ function getRecentContacts(properties){
 				if(hubCache.get("config").type == "hapikey"){
 					var key = hubCache.get("config").value
 					var hapiEndpoint = 'https://api.hubapi.com/contacts/v1/lists/recently_updated/contacts/recent?hapikey='
-					axios.get(hapiEndpoint + key + '&vidOffset=' + vid + "&" + timeOffset + propString)
+					axios.get(hapiEndpoint + key + '&count=100' + '&vidOffset=' + vid + "&" + timeOffset + propString)
 				    .then(response =>{
 				    contacts = contacts.concat(response.data.contacts)
 				    if (response.data['has-more']){
@@ -519,7 +519,7 @@ function getRecentContacts(properties){
 				}else{
 					var token = hubCache.get("config").value
 					var endpoint = ' https://api.hubapi.com/contacts/v1/lists/recently_updated/contacts/recent?'
-					axios.get(endpoint + 'vidOffset=' + vid + "&" + timeOffset + propString,
+					axios.get(endpoint + '&count=100' + 'vidOffset=' + vid + "&" + timeOffset + propString,
 						{headers: {"Authorization": "Bearer " + token }
 					})
 				    .then(response =>{
