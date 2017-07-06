@@ -14,5 +14,12 @@
   },
   "scripts": {
     "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pmanca/hubspot-api-wrapper.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pmanca/hubspot-api-wrapper/issues"
   }
 }
