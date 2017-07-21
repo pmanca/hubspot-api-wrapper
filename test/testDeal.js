@@ -10,8 +10,8 @@ var deal2Delete = 85359153
 var vid = 22851
 
 var token = "CKeKrNmfKxICXwEYiuaNASCRtLUBKKCjAjIZAEL7khOwgSSJ-ubkD4vzceDda2eQbagvNw"
-//var options = {type:"hapikey",value:"xxxxx"}
-var options = {type:"oauth" , value:token}
+var options = {type:"hapikey",value:"xxxxx"}
+//var options = {type:"oauth" , value:token}
 
 var deal2Update = {
   "properties": [
