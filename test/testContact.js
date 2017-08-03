@@ -12,8 +12,8 @@ var utk = "629f2542ccc40c0f413fc35f46c3e799"
 
 
 
-var token = "CKeKrNmfKxICXwEYiuaNASCRtLUBKKCjAjIZAEL7khOwgSSJ-ubkD4vzceDda2eQbagvNw"
-var options = {type:"hapikey",value:"xxxxx"}
+//var token = "CKeKrNmfKxICXwEYiuaNASCRtLUBKKCjAjIZAEL7khOwgSSJ-ubkD4vzceDda2eQbagvNw"
+var options = {type:"hapikey",value:"b4426af6-a1ed-48f7-bbcc-1ac805066df2"}
 //var options = {type:"oauth" , value:token}
 var updateCompanyBody = {
     "properties": [
@@ -299,21 +299,23 @@ describe('Testing the Contact Enpoints',function(){
 			})
 		})
 	})
-
-	describe('Get batch of contacts by UTKs',function(){
-		it('success',function(){
-			return hubspot.contact.getBatchByUTK([utk,utk],["firstname","phonenumber"])
-			.then(data => {
-				assert(data != null)
-			})
-		})
-		it('FAIL',function(){
-			return hubspot.contact.getBatchByUTK([1,2,3])
-			.catch(err => {
-				assert(err.response.status == 404)
-			})
-		})
-	})
+	
+	//This endpoint was unpublished as of 5/18/2018
+	//I don't know when this will be unscoped
+	// describe('Get batch of contacts by UTKs',function(){
+	// 	it('success',function(){
+	// 		return hubspot.contact.getBatchByUTK([utk,utk],["firstname","phonenumber"])
+	// 		.then(data => {
+	// 			assert(data != null)
+	// 		})
+	// 	})
+	// 	it('FAIL',function(){
+	// 		return hubspot.contact.getBatchByUTK([1,2,3])
+	// 		.catch(err => {
+	// 			assert(err.response.status == 404)
+	// 		})
+	// 	})
+	// })
 
 	describe('Merge contacts',function(){
 		it('success',function(){
