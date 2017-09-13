@@ -9,9 +9,9 @@ var companyID = 348915390
 var company2Delete = 313912152
 
 
-var token = "CKeKrNmfKxICXwEYiuaNASCRtLUBKKCjAjIZAEL7khOwgSSJ-ubkD4vzceDda2eQbagvNw"
-var options = {type:"hapikey",value:"xxxxx"}
-//var options = {type:"oauth" , value:token}
+var token = "CL7k8PbnKxICXwEYiuaNASCRtLUBKKCjAjIZAEL7khOJWBS8qo4_kc7a7ehHVw4DMVJvtg"
+//var options = {type:"hapikey",value:"xxxxx"}
+var options = {type:"oauth" , value:token}
 
 var company2Create = {
     "properties": [
