@@ -49,7 +49,7 @@ exports.company = {
 		}else{
 			var token = hubCache.get("config").value
 			return axios.post(endpoint,properties,
-				{headers: {"Authorization": "Bearer " + token }
+				{headers: {"Authorization": "Bearer " + token, "content-type": "application/json" }
 			}).then(response => {
 				return response
 			}).catch(err => {
@@ -186,7 +186,7 @@ exports.company = {
 		}else{
 			var token = hubCache.get("config").value
 			return axios.put(endpoint,{},
-				{headers: {"Authorization": "Bearer " + token}
+				{headers: {"Authorization": "Bearer " + token, "content-type": "application/json"}
 			}).then(response => {
 				return response
 			}).catch(err => {
