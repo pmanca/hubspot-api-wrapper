@@ -21,6 +21,33 @@ var deal2Update = {
     }
   ]
 }
+
+var groupOfDeals2Update = [
+  {
+    "objectId": 77734013,
+    "properties": [
+      {
+        "name": "dealname",
+        "value": "Updated deal name."
+      }
+    ]
+  },
+  {
+    "objectId": 85719808,
+    "properties": [
+      {
+        "name": "dealname",
+        "value": "Another updated deal"
+      },
+      {
+        "name": "amount",
+        "value": 27
+      }
+    ]
+  }
+]
+
+
 var deal2Create =  {
             "portalId": portalID,
             "properties": [
@@ -70,6 +97,21 @@ describe('Testing the Deal Enpoints --> ',function(){
 		})
 		it('FAIL',function(){
 			return hubspot.deal.create("haha")
+			.catch(err => {
+				assert(data.response.status == 404)
+			})			
+		})
+	})
+
+	describe('Update a group of deals',function(){
+		it('success',function(){
+			return hubspot.deal.updateGroupOfDeals(groupOfDeals2Update)
+			.then(data => {
+				assert(data.status == 202)
+			})
+		})
+		it('FAIL',function(){
+			return hubspot.deal.updateGroupOfDeals("haha")
 			.catch(err => {
 				assert(data.response.status == 404)
 			})			

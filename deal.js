@@ -223,6 +223,29 @@ exports.deal = {
 				throw err
 			})
 	},
+	updateGroupOfDeals: body => {
+		var endpoint =  `https://api.hubapi.com/deals/v1/batch-async/update`
+		if(hubCache.get("config").type == "hapikey"){
+			endpoint += `?hapikey=` + hubCache.get("config").value
+			return axios.post(endpoint,body,
+				{headers: {"content-type": "application/json" }
+				}).then(response =>{
+				return response
+			}).catch(err =>{
+				return err
+			})
+		}else{
+			var token = hubCache.get("config").value
+			return axios.post(endpoint,body,
+				{headers: {"Authorization": "Bearer " + token,
+				"content-type": "application/json" }
+			}).then(response => {
+				return response
+			}).catch(err => {
+				return err
+			})
+		}
+	},
 	
 }
 
