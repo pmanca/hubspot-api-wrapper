@@ -172,6 +172,7 @@ Deals -->
 - associate: (dealID,objType,objIDs) =>
 - removeAssociateObject: (dealID,objType,objIDs) =>
 - getAssociatedDeals: (objType, id) =>
+- updateGroupOfDeals: body =>
 
 Owner -->
 ---------------------
