@@ -135,7 +135,6 @@ Contacts -->
 - createOrUpdate: (email,properties) =>
 - update: (vid,properties) =>
 - updateByEmail: (email,properties) => 
-- updateByEmail: (email,properties) =>
 - delete: vid => 
 - search: query => 
 - getBatchByID: (vids,properties) =>
