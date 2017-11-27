@@ -9,7 +9,7 @@ var companyID = 348915390
 var company2Delete = 313912152
 
 
-var token = "CL7k8PbnKxICXwEYiuaNASCRtLUBKKCjAjIZAEL7khOJWBS8qo4_kc7a7ehHVw4DMVJvtg"
+var token = "CIr3xoGALBICXwEYiuaNASCRtLUBKKCjAjIZAFfMOYmNRzAzEIFXHGYYirOYTiVJDcQRNw"
 //var options = {type:"hapikey",value:"xxxxx"}
 var options = {type:"oauth" , value:token}
 

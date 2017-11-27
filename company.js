@@ -61,7 +61,9 @@ exports.company = {
 		var endpoint =  `https://api.hubapi.com/companies/v2/companies/` + companyID
 		if(hubCache.get("config").type == "hapikey"){
 			endpoint += `?hapikey=` + hubCache.get("config").value
-			return axios.put(endpoint,properties).then(response =>{
+			return axios.put(endpoint,properties,
+				{headers: {"content-type": "application/json" }
+			}).then(response =>{
 				return response
 			}).catch(err =>{
 				return err
@@ -69,7 +71,7 @@ exports.company = {
 		}else{
 			var token = hubCache.get("config").value
 			return axios.put(endpoint,properties,
-				{headers: {"Authorization": "Bearer " + token }
+				{headers: {"Authorization": "Bearer " + token,"content-type": "application/json" }
 			}).then(response => {
 				return response
 			}).catch(err => {
@@ -443,18 +445,18 @@ function getRecentlyCreatedCompanies(){
 				//update the key
 				if(hubCache.get("config").type == "hapikey"){
 					var key = hubCache.get("config").value
-					axios.get(endpoint + "?hapikey=" + key + '&count=100' + '&offset=' + offset)
-				    .then(response =>{
-				    companies = companies.concat(response.data.results)
-				    if (response.data['hasMore']){
-				      	setTimeout(function(){
-				      		toCall(response.data['offset'])      		
-				      	},101)
-				      
-				    }else{    	
-				    	resolve(companies)
-				    }
-				  }).catch(error => {
+					axios.get(endpoint + "?hapikey=" + key + '&count=100' + '&offset=' + offset,{headers: {"content-type": "application/json" }
+					}).then(response =>{
+					    companies = companies.concat(response.data.results)
+					    if (response.data['hasMore']){
+					      	setTimeout(function(){
+					      		toCall(response.data['offset'])      		
+					      	},101)
+					      
+					    }else{    	
+					    	resolve(companies)
+					    }
+				 	}).catch(error => {
 				  	//look through 429 error codes for daily or secondly(as in time) limit
 					if(error.response.status == 404){
 						var rejectObject = {
@@ -485,7 +487,7 @@ function getRecentlyCreatedCompanies(){
 				}else{
 					var token = hubCache.get("config").value
 					axios.get(endpoint + '?offset=' + offset + '&count=100',
-						{headers: {"Authorization": "Bearer " + token }
+						{headers: {"Authorization": "Bearer " + token,"content-type": "application/json" }
 					})
 				    .then(response =>{
 				    companies = companies.concat(response.data.companies)
