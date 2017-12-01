@@ -594,11 +594,9 @@ function getContactsAtCompany(companyID){
 						{headers: {"Authorization": "Bearer " + token }
 					})
 				    .then(response =>{
-				    	// console.log(response)
 				    contacts = contacts.concat(response.data.contacts)
 				    if (response.data['hasMore']){
 				    	setTimeout(function(){
-				    		// console.log(response)
 				    		toCall(response.data['offset'])      		
 				    	},101)
 				    }else{    	
