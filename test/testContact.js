@@ -12,9 +12,10 @@ var utk = "629f2542ccc40c0f413fc35f46c3e799"
 
 
 
-//var token = "CKeKrNmfKxICXwEYiuaNASCRtLUBKKCjAjIZAEL7khOwgSSJ-ubkD4vzceDda2eQbagvNw"
-var options = {type:"hapikey",value:"b4426af6-a1ed-48f7-bbcc-1ac805066df2"}
-//var options = {type:"oauth" , value:token}
+var token = "CNPOjKqBLBICXwEYiuaNASCRtLUBKKCjAjIZAPvBbcGdVIYQfCJBBGb3-NXLH90b6RbJWw"
+//var options = {type:"hapikey",value:"b4426af6-a1ed-48f7-bbcc-1ac805066df2"}
+var options = {type:"oauth" , value:token}
+
 var updateCompanyBody = {
     "properties": [
         {
@@ -117,6 +118,7 @@ describe('Testing the Contact Enpoints',function(){
 			this.timeout(10000)
 			return hubspot.contact.getAll()
 			.then(data => {
+				console.log(data)
 				assert(data != null,"did we get something back")
 			})
 		})
@@ -135,8 +137,7 @@ describe('Testing the Contact Enpoints',function(){
 	describe('get contact by email',function(){
 		it('success',function(){
 			return hubspot.contact.getByEmail("pmanca@hubspot.com")
-			.then(data => {
-				
+			.then(data => {				
 				assert(data.status == 200)
 			})
 		})

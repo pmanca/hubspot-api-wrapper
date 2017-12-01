@@ -9,9 +9,9 @@ var dealID = 85363503
 var deal2Delete = 85359153
 var vid = 22851
 
-var token = "CKeKrNmfKxICXwEYiuaNASCRtLUBKKCjAjIZAEL7khOwgSSJ-ubkD4vzceDda2eQbagvNw"
-var options = {type:"hapikey",value:"xxxxx"}
-//var options = {type:"oauth" , value:token}
+var token = "CIr3xoGALBICXwEYiuaNASCRtLUBKKCjAjIZAFfMOYmNRzAzEIFXHGYYirOYTiVJDcQRNw"
+//var options = {type:"hapikey",value:"xxxxx"}
+var options = {type:"oauth" , value:token}
 
 var deal2Update = {
   "properties": [
@@ -146,6 +146,7 @@ describe('Testing the Deal Enpoints --> ',function(){
 		it('success',function(){
 			return hubspot.deal.getRecentlyModified()
 			.then(data => {
+				console.log(data)
 				assert(data != null)
 			})
 		})
@@ -155,6 +156,7 @@ describe('Testing the Deal Enpoints --> ',function(){
 		it('success',function(){
 			return hubspot.deal.getRecentlyCreated()
 			.then(data => {
+				console.log(data)
 				assert(data != null)
 			})
 		})

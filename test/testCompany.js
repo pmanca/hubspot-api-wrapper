@@ -101,6 +101,7 @@ describe('Testing the company endpoints -->',function(){
 			this.timeout(10000)
 			return hubspot.company.getRecentlyModified()
 			.then(data => {
+				console.log(data)
 				assert(data != null)
 			})
 		})
@@ -111,6 +112,7 @@ describe('Testing the company endpoints -->',function(){
 			this.timeout(10000)
 			return hubspot.company.getRecentlyCreated()
 			.then(data => {
+				console.log(data)
 				assert(data != null)
 			})
 		})
@@ -165,6 +167,7 @@ describe('Testing the company endpoints -->',function(){
 		it('success',function(){
 			return hubspot.company.getContactIDsByCompanyID(270798078,portalID)
 			.then(data => {
+				console.log(data)
 				assert(data != null)
 			})
 		})
