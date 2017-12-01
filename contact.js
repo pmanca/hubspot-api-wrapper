@@ -392,7 +392,6 @@ function getContacts(properties){
 			propString += "&property=" + properties[i]
 		}	
 	}
-	
 	return new Promise(function(resolve,reject){
 		
 		toCall(0)
@@ -442,8 +441,8 @@ function getContacts(properties){
 				  })
 				}else{
 					var token = hubCache.get("config").value
-					var hapiEndpoint = 'https://api.hubapi.com/contacts/v1/lists/all/contacts/all?'
-					axios.get(hapiEndpoint + '&count=100' + 'vidOffset=' + vid + propString,
+					var hapiEndpoint = 'https://api.hubapi.com/contacts/v1/lists/all/contacts/all'
+					axios.get(hapiEndpoint + '?count=100' + '&vidOffset=' + vid + propString,
 						{headers: {"Authorization": "Bearer " + token }
 					})
 				    .then(response =>{
@@ -553,8 +552,8 @@ function getRecentContacts(properties){
 				  })
 				}else{
 					var token = hubCache.get("config").value
-					var endpoint = ' https://api.hubapi.com/contacts/v1/lists/recently_updated/contacts/recent?'
-					axios.get(endpoint + '&count=100' + 'vidOffset=' + vid + "&" + timeOffset + propString,
+					var endpoint = ' https://api.hubapi.com/contacts/v1/lists/recently_updated/contacts/recent'
+					axios.get(endpoint + '?count=100' + '&vidOffset=' + vid + "&" + timeOffset + propString,
 						{headers: {"Authorization": "Bearer " + token }
 					})
 				    .then(response =>{
