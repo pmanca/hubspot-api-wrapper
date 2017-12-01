@@ -5,11 +5,11 @@ var hubspot = require('../index')
 var assert = require('assert')
 var portalID = 2323210
 var randNum = Math.random() * 100
-var companyID = 348915390
+var companyID = 620189606
 var company2Delete = 313912152
 
 
-var token = "CIr3xoGALBICXwEYiuaNASCRtLUBKKCjAjIZAFfMOYmNRzAzEIFXHGYYirOYTiVJDcQRNw"
+var token = "CNPOjKqBLBICXwEYiuaNASCRtLUBKKCjAjIZAPvBbcGdVIYQfCJBBGb3-NXLH90b6RbJWw"
 //var options = {type:"hapikey",value:"xxxxx"}
 var options = {type:"oauth" , value:token}
 
@@ -150,13 +150,14 @@ describe('Testing the company endpoints -->',function(){
 
 	describe('get contacts by company ID',function(){
 		it('success',function(){
-			return hubspot.company.getContactsByCompanyID(companyID,portalID)
+			return hubspot.company.getContactsByCompanyID(companyID)
 			.then(data => {
+				console.log(data)
 				assert(data != null)
 			})
 		})
 		it('FAIL',function(){
-			return hubspot.company.getContactsByCompanyID(-99,portalID)
+			return hubspot.company.getContactsByCompanyID(-99)
 			.catch(err => {
 				assert(err.response.status == 404)
 			})

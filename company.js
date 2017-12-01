@@ -160,8 +160,8 @@ exports.company = {
 			})
 		}
 	},
-	getContactsByCompanyID: (companyID,portalID) => {		
-		    return getContactsAtCompany(companyID,portalID).then(response => {
+	getContactsByCompanyID: (companyID) => {		
+		    return getContactsAtCompany(companyID).then(response => {
 		    	return response	
 		    }).catch(err =>{
 				throw err
@@ -536,9 +536,9 @@ function getRecentlyCreatedCompanies(){
 
 }
 
-function getContactsAtCompany(companyID,portalID){
+function getContactsAtCompany(companyID){
 	var contacts = []
-	var endpoint = `https://api.hubapi.com/companies/v2/companies/`+ companyID + `/contacts?portalId=` + portalID
+	var endpoint = `https://api.hubapi.com/companies/v2/companies/`+ companyID + `/contacts`
 
 	
 	
@@ -550,7 +550,7 @@ function getContactsAtCompany(companyID,portalID){
 				//update the key
 				if(hubCache.get("config").type == "hapikey"){
 					var key = hubCache.get("config").value
-					axios.get(endpoint + "&hapikey=" + key + '&vidOffset=' + vidOffset)
+					axios.get(endpoint + "?hapikey=" + key + '&vidOffset=' + vidOffset)
 				    .then(response =>{
 				    contacts = contacts.concat(response.data.contacts)
 				    if (response.data['hasMore']){
@@ -590,13 +590,15 @@ function getContactsAtCompany(companyID,portalID){
 				  })
 				}else{
 					var token = hubCache.get("config").value
-					axios.get(endpoint + '&vidOffset=' + vidOffset,
+					axios.get(endpoint + '?vidOffset=' + vidOffset,
 						{headers: {"Authorization": "Bearer " + token }
 					})
 				    .then(response =>{
-				    contacts = contacts.concat(response.data.companies)
+				    	// console.log(response)
+				    contacts = contacts.concat(response.data.contacts)
 				    if (response.data['hasMore']){
 				    	setTimeout(function(){
+				    		// console.log(response)
 				    		toCall(response.data['offset'])      		
 				    	},101)
 				    }else{    	
