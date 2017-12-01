@@ -1,6 +1,6 @@
 {
   "name": "hubspot-api-wrapper",
-  "version": "0.6.3",
+  "version": "0.6.4",
   "description": "HubSpot API Module",
   "main": "index.js",
   "author": "Peter Manca",
