@@ -9,7 +9,7 @@ var dealID = 85363503
 var deal2Delete = 85359153
 var vid = 22851
 
-var token = "CIr3xoGALBICXwEYiuaNASCRtLUBKKCjAjIZAFfMOYmNRzAzEIFXHGYYirOYTiVJDcQRNw"
+var token = "CK23wZeCLBICXwEYiuaNASCWrMMBKKCjAjIZAFaAp3DDLHQbDe2zGn1rkWv5Tl7DNY0Mrg"
 //var options = {type:"hapikey",value:"xxxxx"}
 var options = {type:"oauth" , value:token}
 
@@ -137,7 +137,7 @@ describe('Testing the Deal Enpoints --> ',function(){
 		it('success',function(){
 			return hubspot.deal.getAll()
 			.then(data => {
-				assert(data != null)
+				assert(data[0] != null)
 			})
 		})
 	})
@@ -146,8 +146,7 @@ describe('Testing the Deal Enpoints --> ',function(){
 		it('success',function(){
 			return hubspot.deal.getRecentlyModified()
 			.then(data => {
-				console.log(data)
-				assert(data != null)
+				assert(data[0] != null)
 			})
 		})
 	})
@@ -156,8 +155,7 @@ describe('Testing the Deal Enpoints --> ',function(){
 		it('success',function(){
 			return hubspot.deal.getRecentlyCreated()
 			.then(data => {
-				console.log(data)
-				assert(data != null)
+				assert(data[0] != null)
 			})
 		})
 	})
@@ -226,13 +224,13 @@ describe('Testing the Deal Enpoints --> ',function(){
 		it('success',function(){
 			return hubspot.deal.getAssociatedDeals("CONTACT",vid)
 			.then(data => {
-				assert(data != null)
+				assert(data[0] != null)
 			})
 		})
 		it('FAIL',function(){
 			return hubspot.deal.getAssociatedDeals("CONTACT",-99)
 			.catch(err => {
-				assert(err.response.status == 404)
+				assert(err.error.status == 400)
 			})
 		})
 	})

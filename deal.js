@@ -361,7 +361,7 @@ function getDeals(properties){
 
 function getRecentlyModifiedDeals(){
 	var deals = []
-	var endpoint = `https://api.hubapi.com/deals/v1/deal/recent/modified`
+	var endpoint = 'https://api.hubapi.com/deals/v1/deal/recent/modified'
 	
 	return new Promise(function(resolve,reject){
 		
@@ -373,84 +373,84 @@ function getRecentlyModifiedDeals(){
 					var key = hubCache.get("config").value
 					axios.get(endpoint + "?hapikey=" + key + '&count=100' + '&offset=' + offset)
 				    .then(response =>{
-				    deals = deals.concat(response.data.deals)
-				    if (response.data['hasMore']){
-				    	setTimeout(function(){
-				    		toCall(response.data['offset'])      		
-				    	},101)
-				    }else{    	
-				    	resolve(deals)
-				    }
-				  }).catch(error => {
-				  	//look through 429 error codes for daily or secondly(as in time) limit
-					if(error.response.status == 404){
-						var rejectObject = {
-							advice: "You have a 404 error for endpoint not found.",
-							error: error.response
+					    deals = deals.concat(response.data.results)
+					    if (response.data['hasMore']){
+					    	setTimeout(function(){
+					    		toCall(response.data['offset'])      		
+					    	},101)
+					    }else{    	
+					    	resolve(deals)
+					    }
+				  	}).catch(error => {
+					  	//look through 429 error codes for daily or secondly(as in time) limit
+						if(error.response.status == 404){
+							var rejectObject = {
+								advice: "You have a 404 error for endpoint not found.",
+								error: error.response
+							}
+							reject(rejectObject)
+						}else if(error.response.status == 429){
+							var rejectObject = {
+								advice: "You have exceeded your call limit for the day.",
+								error: error.response
+							}
+							reject(rejectObject)
+						}else if(error.response.status == 401){
+							var rejectObject = {
+								advice: "You are not authorized to hit this endpoint.",
+								error: error.response
+							}
+							reject(rejectObject)
+						}else{
+							var rejectObject = {
+								advice: "You received a " + error.response.status + " error.",
+								error: error.response
+							}
+							reject(rejectObject)
 						}
-						reject(rejectObject)
-					}else if(error.response.status == 429){
-						var rejectObject = {
-							advice: "You have exceeded your call limit for the day.",
-							error: error.response
-						}
-						reject(rejectObject)
-					}else if(error.response.status == 401){
-						var rejectObject = {
-							advice: "You are not authorized to hit this endpoint.",
-							error: error.response
-						}
-						reject(rejectObject)
-					}else{
-						var rejectObject = {
-							advice: "You received a " + error.response.status + " error.",
-							error: error.response
-						}
-						reject(rejectObject)
-					}
-				  })
+				  	})
 				}else{
 					var token = hubCache.get("config").value
-					axios.get(endpoint + '&count=100' + '?offset=' + offset,
+					axios.get(endpoint + '?count=100' + '&offset=' + offset,
 						{headers: {"Authorization": "Bearer " + token }
 					})
 				    .then(response =>{
-				    deals = deals.concat(response.data.deals)
-				    if (response.data['hasMore']){
-				    	setTimeout(function(){
-				    		toCall(response.data['offset'])      		
-				    	},101)				      
-				    }else{    	
-				    	resolve(deals)
-				    }
-				  }).catch(error => {
-				  	//look through 429 error codes for daily or secondly(as in time) limit
-					if(error.response.status == 404){
-						var rejectObject = {
-							advice: "You have a 404 error for endpoint not found.",
-							error: error.response
+					    deals = deals.concat(response.data.results)
+					    if (response.data['hasMore']){
+					    	setTimeout(function(){
+					    		toCall(response.data['offset'])      		
+					    	},101)				      
+					    }else{    	
+					    	resolve(deals)
+					    }
+				  	}).catch(error => {
+					  	//look through 429 error codes for daily or secondly(as in time) limit
+						if(error.response.status == 404){
+							var rejectObject = {
+								advice: "You have a 404 error for endpoint not found.",
+								error: error.response
+							}
+							reject(rejectObject)
+						}else if(error.response.status == 429){
+							var rejectObject = {
+								advice: "You have exceeded your call limit for the day.",
+								error: error.response
+							}
+							reject(rejectObject)
+						}else if(error.response.status == 401){
+							var rejectObject = {
+								advice: "You are not authorized to hit this endpoint.",
+								error: error.response
+							}
+							reject(rejectObject)
+						}else{
+							var rejectObject = {
+								advice: "You received a " + error.response.status + " error.",
+								error: error.response
+							}
+							reject(rejectObject)
 						}
-						reject(rejectObject)
-					}else if(error.response.status == 429){
-						var rejectObject = {
-							advice: "You have exceeded your call limit for the day.",
-							error: error.response
-						}
-						reject(rejectObject)
-					}else if(error.response.status == 401){
-						var rejectObject = {
-							advice: "You are not authorized to hit this endpoint.",
-							error: error.response
-						}
-						reject(rejectObject)
-					}else{
-						var rejectObject = {
-							advice: "You received a " + error.response.status + " error.",
-							error: error.response
-						}
-						reject(rejectObject)
-					}
-				  })
+				  	})
 				}//end of oauth block
 				
 		
@@ -463,7 +463,7 @@ function getRecentlyModifiedDeals(){
 
 function getRecentlyCreatedDeals(){
 	var deals = []
-	var endpoint = `https://api.hubapi.com/deals/v1/deal/recent/created`
+	var endpoint = 'https://api.hubapi.com/deals/v1/deal/recent/created'
 	
 	return new Promise(function(resolve,reject){
 		
@@ -475,84 +475,84 @@ function getRecentlyCreatedDeals(){
 					var key = hubCache.get("config").value
 					axios.get(endpoint + "?hapikey=" + key + '&count=100' + '&offset=' + offset)
 				    .then(response =>{
-				    deals = deals.concat(response.data.deals)
-				    if (response.data['hasMore']){
-				    	setTimeout(function(){
-				    		toCall(response.data['offset'])      		
-				    	},101)
-				    }else{    	
-				    	resolve(deals)
-				    }
-				  }).catch(error => {
-				  	//look through 429 error codes for daily or secondly(as in time) limit
-					if(error.response.status == 404){
-						var rejectObject = {
-							advice: "You have a 404 error for endpoint not found.",
-							error: error.response
+					    deals = deals.concat(response.data.results)
+					    if (response.data['hasMore']){
+					    	setTimeout(function(){
+					    		toCall(response.data['offset'])      		
+					    	},101)
+					    }else{    	
+					    	resolve(deals)
+					    }
+				  	}).catch(error => {
+					  	//look through 429 error codes for daily or secondly(as in time) limit
+						if(error.response.status == 404){
+							var rejectObject = {
+								advice: "You have a 404 error for endpoint not found.",
+								error: error.response
+							}
+							reject(rejectObject)
+						}else if(error.response.status == 429){
+							var rejectObject = {
+								advice: "You have exceeded your call limit for the day.",
+								error: error.response
+							}
+							reject(rejectObject)
+						}else if(error.response.status == 401){
+							var rejectObject = {
+								advice: "You are not authorized to hit this endpoint.",
+								error: error.response
+							}
+							reject(rejectObject)
+						}else{
+							var rejectObject = {
+								advice: "You received a " + error.response.status + " error.",
+								error: error.response
+							}
+							reject(rejectObject)
 						}
-						reject(rejectObject)
-					}else if(error.response.status == 429){
-						var rejectObject = {
-							advice: "You have exceeded your call limit for the day.",
-							error: error.response
-						}
-						reject(rejectObject)
-					}else if(error.response.status == 401){
-						var rejectObject = {
-							advice: "You are not authorized to hit this endpoint.",
-							error: error.response
-						}
-						reject(rejectObject)
-					}else{
-						var rejectObject = {
-							advice: "You received a " + error.response.status + " error.",
-							error: error.response
-						}
-						reject(rejectObject)
-					}
-				  })
+				  	})
 				}else{
 					var token = hubCache.get("config").value
-					axios.get(endpoint + '&count=100' + '?offset=' + offset,
+					axios.get(endpoint + '?count=100' + '&offset=' + offset,
 						{headers: {"Authorization": "Bearer " + token }
 					})
 				    .then(response =>{
-				    deals = deals.concat(response.data.deals)
-				    if (response.data['hasMore']){
-				    	setTimeout(function(){
-				    		toCall(response.data['offset'])      
-				    	},101)
-				    }else{    	
-				    	resolve(deals)
-				    }
-				  }).catch(error => {
-				  	//look through 429 error codes for daily or secondly(as in time) limit
-					if(error.response.status == 404){
-						var rejectObject = {
-							advice: "You have a 404 error for endpoint not found.",
-							error: error.response
+					    deals = deals.concat(response.data.results)
+					    if (response.data['hasMore']){
+					    	setTimeout(function(){
+					    		toCall(response.data['offset'])      
+					    	},101)
+					    }else{    	
+					    	resolve(deals)
+					    }
+				  	}).catch(error => {
+					  	//look through 429 error codes for daily or secondly(as in time) limit
+						if(error.response.status == 404){
+							var rejectObject = {
+								advice: "You have a 404 error for endpoint not found.",
+								error: error.response
+							}
+							reject(rejectObject)
+						}else if(error.response.status == 429){
+							var rejectObject = {
+								advice: "You have exceeded your call limit for the day.",
+								error: error.response
+							}
+							reject(rejectObject)
+						}else if(error.response.status == 401){
+							var rejectObject = {
+								advice: "You are not authorized to hit this endpoint.",
+								error: error.response
+							}
+							reject(rejectObject)
+						}else{
+							var rejectObject = {
+								advice: "You received a " + error.response.status + " error.",
+								error: error.response
+							}
+							reject(rejectObject)
 						}
-						reject(rejectObject)
-					}else if(error.response.status == 429){
-						var rejectObject = {
-							advice: "You have exceeded your call limit for the day.",
-							error: error.response
-						}
-						reject(rejectObject)
-					}else if(error.response.status == 401){
-						var rejectObject = {
-							advice: "You are not authorized to hit this endpoint.",
-							error: error.response
-						}
-						reject(rejectObject)
-					}else{
-						var rejectObject = {
-							advice: "You received a " + error.response.status + " error.",
-							error: error.response
-						}
-						reject(rejectObject)
-					}
-				  })
+				  	})
 				}//end of oauth block
 				
 		
@@ -565,7 +565,7 @@ function getRecentlyCreatedDeals(){
 
 function getAssociatedDealsOfObject(objType,id){
 	var deals = []	
-	var endpoint = `https://api.hubapi.com/deals/v1/deal/associated/` + objType + `/` + id + `/paged`
+	var endpoint = `https://api.hubapi.com/deals/v1/deal/associated/${objType}/${id}/paged`
 	
 	
 	return new Promise(function(resolve,reject){
@@ -578,84 +578,84 @@ function getAssociatedDealsOfObject(objType,id){
 					var key = hubCache.get("config").value
 					axios.get(endpoint + "?hapikey=" + key + '&offset=' + offset)
 				    .then(response =>{
-				    deals = deals.concat(response.data.deals)
-				    if (response.data['hasMore']){
-				    	setTimeout(function(){
-				    		toCall(response.data['offset'])      		
-				    	})
-				    }else{    	
-				    	resolve(deals)
-				    }
-				  }).catch(error => {
-				  	//look through 429 error codes for daily or secondly(as in time) limit
-					if(error.response.status == 404){
-						var rejectObject = {
-							advice: "You have a 404 error for endpoint not found.",
-							error: error.response
+					    deals = deals.concat(response.data.deals)
+					    if (response.data['hasMore']){
+					    	setTimeout(function(){
+					    		toCall(response.data['offset'])      		
+					    	})
+					    }else{    	
+					    	resolve(deals)
+					    }
+				  	}).catch(error => {
+					  	//look through 429 error codes for daily or secondly(as in time) limit
+						if(error.response.status == 404){
+							var rejectObject = {
+								advice: "You have a 404 error for endpoint not found.",
+								error: error.response
+							}
+							reject(rejectObject)
+						}else if(error.response.status == 429){
+							var rejectObject = {
+								advice: "You have exceeded your call limit for the day.",
+								error: error.response
+							}
+							reject(rejectObject)
+						}else if(error.response.status == 401){
+							var rejectObject = {
+								advice: "You are not authorized to hit this endpoint.",
+								error: error.response
+							}
+							reject(rejectObject)
+						}else{
+							var rejectObject = {
+								advice: "You received a " + error.response.status + " error.",
+								error: error.response
+							}
+							reject(rejectObject)
 						}
-						reject(rejectObject)
-					}else if(error.response.status == 429){
-						var rejectObject = {
-							advice: "You have exceeded your call limit for the day.",
-							error: error.response
-						}
-						reject(rejectObject)
-					}else if(error.response.status == 401){
-						var rejectObject = {
-							advice: "You are not authorized to hit this endpoint.",
-							error: error.response
-						}
-						reject(rejectObject)
-					}else{
-						var rejectObject = {
-							advice: "You received a " + error.response.status + " error.",
-							error: error.response
-						}
-						reject(rejectObject)
-					}
-				  })
+				  	})
 				}else{
 					var token = hubCache.get("config").value
 					axios.get(endpoint + '?offset=' + offset,
 						{headers: {"Authorization": "Bearer " + token }
 					})
 				    .then(response =>{
-				    deals = deals.concat(response.data.deals)
-				    if (response.data['hasMore']){
-				    	setTimeout(function(){
-				    		toCall(response.data['offset'])      		
-				    	},101)
-				    }else{    	
-				    	resolve(deals)
-				    }
-				  }).catch(error => {
-				  	//look through 429 error codes for daily or secondly(as in time) limit
-					if(error.response.status == 404){
-						var rejectObject = {
-							advice: "You have a 404 error for endpoint not found.",
-							error: error.response
+					    deals = deals.concat(response.data.deals)
+					    if (response.data['hasMore']){
+					    	setTimeout(function(){
+					    		toCall(response.data['offset'])      		
+					    	},101)
+					    }else{    	
+					    	resolve(deals)
+					    }
+				  	}).catch(error => {
+					  	//look through 429 error codes for daily or secondly(as in time) limit
+						if(error.response.status == 404){
+							var rejectObject = {
+								advice: "You have a 404 error for endpoint not found.",
+								error: error.response
+							}
+							reject(rejectObject)
+						}else if(error.response.status == 429){
+							var rejectObject = {
+								advice: "You have exceeded your call limit for the day.",
+								error: error.response
+							}
+							reject(rejectObject)
+						}else if(error.response.status == 401){
+							var rejectObject = {
+								advice: "You are not authorized to hit this endpoint.",
+								error: error.response
+							}
+							reject(rejectObject)
+						}else{
+							var rejectObject = {
+								advice: "You received a " + error.response.status + " error.",
+								error: error.response
+							}
+							reject(rejectObject)
 						}
-						reject(rejectObject)
-					}else if(error.response.status == 429){
-						var rejectObject = {
-							advice: "You have exceeded your call limit for the day.",
-							error: error.response
-						}
-						reject(rejectObject)
-					}else if(error.response.status == 401){
-						var rejectObject = {
-							advice: "You are not authorized to hit this endpoint.",
-							error: error.response
-						}
-						reject(rejectObject)
-					}else{
-						var rejectObject = {
-							advice: "You received a " + error.response.status + " error.",
-							error: error.response
-						}
-						reject(rejectObject)
-					}
-				  })
+				  	})
 				}//end of oauth block
 				
 		
