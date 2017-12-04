@@ -7,9 +7,10 @@ var portalID = 2323210
 var randNum = Math.random() * 100
 var companyID = 620189606
 var company2Delete = 313912152
+var companyWithContact = 615228671
 
 
-var token = "CNPOjKqBLBICXwEYiuaNASCRtLUBKKCjAjIZAPvBbcGdVIYQfCJBBGb3-NXLH90b6RbJWw"
+var token = "CK23wZeCLBICXwEYiuaNASCWrMMBKKCjAjIZAFaAp3DDLHQbDe2zGn1rkWv5Tl7DNY0Mrg"
 //var options = {type:"hapikey",value:"xxxxx"}
 var options = {type:"oauth" , value:token}
 
@@ -46,7 +47,7 @@ describe('Testing the company endpoints -->',function(){
 			this.timeout(30000)
 			return hubspot.company.getAll()
 			.then(data => {
-				assert(data != null,"did we get something back")
+				assert(data[0] != null,"did we get something back")
 			})
 		})
 	})	
@@ -101,8 +102,7 @@ describe('Testing the company endpoints -->',function(){
 			this.timeout(10000)
 			return hubspot.company.getRecentlyModified()
 			.then(data => {
-				console.log(data)
-				assert(data != null)
+				assert(data[0] != null)
 			})
 		})
 	})
@@ -112,8 +112,7 @@ describe('Testing the company endpoints -->',function(){
 			this.timeout(10000)
 			return hubspot.company.getRecentlyCreated()
 			.then(data => {
-				console.log(data)
-				assert(data != null)
+				assert(data[0] != null)
 			})
 		})
 	})
@@ -152,8 +151,7 @@ describe('Testing the company endpoints -->',function(){
 		it('success',function(){
 			return hubspot.company.getContactsByCompanyID(companyID)
 			.then(data => {
-				console.log(data)
-				assert(data != null)
+				assert(data[0] != null)
 			})
 		})
 		it('FAIL',function(){
@@ -166,14 +164,13 @@ describe('Testing the company endpoints -->',function(){
 
 	describe('Get contact IDs by company',function(){
 		it('success',function(){
-			return hubspot.company.getContactIDsByCompanyID(270798078,portalID)
+			return hubspot.company.getContactIDsByCompanyID(companyWithContact)
 			.then(data => {
-				console.log(data)
-				assert(data != null)
+				assert(data[0] != null)
 			})
 		})
 		it('FAIL',function(){
-			return hubspot.company.getContactIDsByCompanyID(-99,portalID)
+			return hubspot.company.getContactIDsByCompanyID(-99)
 			.catch(err => {
 				assert(data.response.status == 404)
 			})

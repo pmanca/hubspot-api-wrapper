@@ -119,7 +119,7 @@ describe('Testing the Contact Enpoints',function(){
 			return hubspot.contact.getAll()
 			.then(data => {
 				console.log(data)
-				assert(data != null,"did we get something back")
+				assert(data[0] != null,"did we get something back")
 			})
 		})
 	})
@@ -129,7 +129,7 @@ describe('Testing the Contact Enpoints',function(){
 			this.timeout(7000)
 			return hubspot.contact.getRecent()
 			.then(data => {
-				assert(data != null,"did we get something back")
+				assert(data[0] != null,"did we get something back")
 			})
 		})	
 	})
