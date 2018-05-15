@@ -450,7 +450,7 @@ function getContacts(properties){
 				    if (response.data['has-more']){
 				    	setTimeout(function(){
 				    		toCall(response.data['vid-offset'])      		
-				    	})
+				    	},101)
 				    }else{    	
 				    	resolve(contacts)
 				    }

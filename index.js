@@ -6,6 +6,7 @@ var crm = require('./crm').crm
 var owner = require('./owner').owner
 var engagement = require('./engagement').engagement
 var util = require('./util').util
+var product = require('./product').product
 
 
 exports.init = init
@@ -16,3 +17,4 @@ exports.crm = crm
 exports.owner = owner
 exports.engagement = engagement
 exports.util = util
+exports.product = product
